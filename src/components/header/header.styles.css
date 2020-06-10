@@ -1,0 +1,31 @@
+.header {
+    padding: 10px 5px;
+}
+
+.header a {     
+    text-decoration: none;
+    color: black;
+}
+
+.header-left {
+    display: relative;
+    float: left;
+}
+
+.header-right {
+    position: relative;
+    float: right;
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation, .navigation ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.navigation li {
+    list-style: none;
+    padding: 0px 10px;
+}
