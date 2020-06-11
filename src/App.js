@@ -23,11 +23,11 @@ function App() {
         <Route path='/contact'>
           <ContactPage/>
         </Route>
-        <Route path='/signin'>
-          <SignInUpPage/>
-        </Route>
         <Route path='/checkout'>
           <CheckoutPage/>
+        </Route>
+        <Route path='/signin'>
+          <SignInUpPage/>
         </Route>
       </Switch>
     </div>

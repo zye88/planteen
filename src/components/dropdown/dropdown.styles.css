@@ -1,0 +1,10 @@
+.cart-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    height: 200px;
+    width: 200px;
+    border: solid grey 1px;
+    border-radius: 12px;
+    padding: 10px;
+}

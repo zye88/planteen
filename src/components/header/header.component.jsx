@@ -1,32 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './header.styles.css';
 import { Link } from 'react-router-dom';
 
 import Cart from '../cart/cart.component';
+import Dropdown from '../dropdown/dropdown.component';
 
-const Header = () => (
-    <div className='header'>
-        <div className='header-left'>
-            <Link to='/'>BRANDING</Link>
-        </div>
-        <div className='header-right'>
-            <ul className='navigation'>
-                <li>
-                    <Link to='/shop'>SHOP</Link>
-                </li>
-                <li>
+class Header extends Component { 
+    constructor() {
+        super();
+        this.state = {
+            dropdownHidden: true,
+        }
+    }
+
+    render() {
+        let { dropdownHidden } = this.state;
+        return (
+            <div className='header'>
+                <div className='header-item'>
+                    <Link to='/'>BRANDING</Link>
+                </div>
+                <div className='header-item'>
+                    <ul>
+                        <li>
+                            <Link to='/shop'>SHOP</Link>
+                        </li>
+                        <li>
+                            <Link to='/contact'>CONTACT</Link>
+                        </li>
+                        <li>
+                            <Link to='/checkout'>CHECKOUT</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className='header-item'>
                     <Link to='/signin'>SIGN IN</Link>
-                </li>
-                <li>
-                    <Link to='/contact'>CONTACT</Link>
-                </li>
-                <li>
-                    <Link to='/checkout'>CHECKOUT</Link>
-                </li>
-            </ul>
-            <Cart />
-        </div>
-    </div>
-);
+                    <Cart handleClick={() => {
+                        this.setState({dropdownHidden: !dropdownHidden})}}/>
+                    {dropdownHidden? '' : 
+                        <Dropdown>
+                            CART DROPDOWN
+                        </Dropdown>}
+                </div>
+            </div>
+        )
+    }
+};
 
 export default Header;

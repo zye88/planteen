@@ -1,31 +1,27 @@
 .header {
     padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .header a {     
     text-decoration: none;
-    color: black;
+    color: darkgrey;
 }
 
-.header-left {
-    display: relative;
-    float: left;
-}
-
-.header-right {
-    position: relative;
-    float: right;
+.header-item {
     display: flex;
     flex-direction: row;
 }
 
-.navigation, .navigation ul {
+.header ul {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.navigation li {
+.header li {
     list-style: none;
     padding: 0px 10px;
 }
