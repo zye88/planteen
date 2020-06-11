@@ -1,0 +1,21 @@
+.shop-item {
+    margin: 10px;
+    width: 200px;
+}
+
+.shop-item img {
+    height: 250px;
+    width: 200px;
+}
+
+.shop-item button {
+    position: relative;
+    top: -65px;
+    left: 45px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -14,7 +14,8 @@ class Header extends Component {
     }
 
     render() {
-        let { dropdownHidden } = this.state;
+        const { dropdownHidden } = this.state;
+        const { cart: { items, count }} = this.props;
         return (
             <div className='header'>
                 <div className='header-item'>
@@ -35,11 +36,12 @@ class Header extends Component {
                 </div>
                 <div className='header-item'>
                     <Link to='/signin'>SIGN IN</Link>
-                    <Cart handleClick={() => {
+                    <Cart count={count} handleClick={() => {
                         this.setState({dropdownHidden: !dropdownHidden})}}/>
                     {dropdownHidden? '' : 
-                        <Dropdown>
+                        <Dropdown >
                             CART DROPDOWN
+                            { items }
                         </Dropdown>}
                 </div>
             </div>
