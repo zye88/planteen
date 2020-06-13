@@ -1,6 +1,5 @@
 const SHOP_DATA = {
-    low: [
-        {
+    low: [{
             id: 'L1',
             name: 'Cast Iron',
             price: 50,

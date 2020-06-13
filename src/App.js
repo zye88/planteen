@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
@@ -9,43 +9,27 @@ import ContactPage from './pages/contactpage/contactpage.component';
 import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cart: {
-        items: [1, 2, 3],
-        count: 3
-      }
-    }
-  }
-
-  render() {
-    const { cart } = this.state;
-
-    return (
-      <div className="App">
-        <Header cart={cart}/>
-        <Switch>
-          <Route exact path='/'>
-            <HomePage/>
-          </Route>
-          <Route path='/shop'>
-            <ShopPage/>
-          </Route>
-          <Route path='/contact'>
-            <ContactPage/>
-          </Route>
-          <Route path='/checkout'>
-            <CheckoutPage/>
-          </Route>
-          <Route path='/signin'>
-            <SignInUpPage/>
-          </Route>
-        </Switch>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Header/>
+    <Switch>
+      <Route exact path='/'>
+        <HomePage/>
+      </Route>
+      <Route path='/shop'>
+        <ShopPage/>
+      </Route>
+      <Route path='/contact'>
+        <ContactPage/>
+      </Route>
+      <Route path='/checkout'>
+        <CheckoutPage/>
+      </Route>
+      <Route path='/signin'>
+        <SignInUpPage/>
+      </Route>
+    </Switch>
+  </div>
+);
 
 export default App;

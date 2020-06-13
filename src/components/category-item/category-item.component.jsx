@@ -1,12 +1,21 @@
 import React from 'react';
 import './category-item.styles.css';
 
-const CategoryItem = ({ category: {title, text, imageUrl, path}}) => (
+import CustomButton from '../custom-button/custom-button.component';
+
+const CategoryItem = ({ category: {title, text, filename, path}}) => (
     <div className='category-item'>
-        <div>{imageUrl}</div>
-        <h3>{title}</h3>
-        <p>{text}</p>
-        <div>{path}</div>
+        <div className='category-left'>
+            <img src={require(`../../assets/${filename}`)}/>
+        </div>
+        <div className='category-right'>
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <CustomButton 
+                label={'SHOP NOW'} 
+                handleClick={() => { console.log('sth happened')}}/>
+            <div>{path}</div>
+        </div>
     </div>
 );
 

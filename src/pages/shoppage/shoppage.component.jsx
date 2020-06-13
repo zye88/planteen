@@ -1,11 +1,11 @@
 import React from 'react';
 import './shoppage.styles.css';
 
-import CategoryContainer from '../../components/category-container/category-container.component';
+import ShopContainer from '../../components/shop-container/shop-container.component';
 
 const ShopPage = () => (
     <div className='shoppage'>
-        <CategoryContainer category={'low'}/>
+        <ShopContainer category={'low'}/>
     </div>
 );
 

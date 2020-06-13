@@ -7,7 +7,7 @@ import CategoryItem from '../../components/category-item/category-item.component
 const HomePage = () => (
     <div className='homepage'>
         <h2>HOMEPAGE</h2>
-        <div className='categories'>
+        <div className='category-container'>
             { 
                 CATEGORIES.map(category => <CategoryItem 
                     key={category.id}

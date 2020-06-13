@@ -1,11 +1,9 @@
-.category-container {
+.shop-container {
     position: relative;
-    left: 50%;
     width: 75vw;
-    margin-left: -40vw;
 }
 
-.items {
+.shop-items {
     display: flex;
     flex-wrap: wrap;
 }
