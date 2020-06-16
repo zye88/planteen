@@ -5,6 +5,7 @@ import ShopContainer from '../../components/shop-container/shop-container.compon
 
 const ShopPage = () => (
     <div className='shoppage'>
+        SHOP PAGE
         <ShopContainer category={'low'}/>
     </div>
 );

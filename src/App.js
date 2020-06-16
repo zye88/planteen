@@ -13,20 +13,24 @@ const App = () => (
   <div className="App">
     <Header/>
     <Switch>
-      <Route exact path='/'>
-        <HomePage/>
-      </Route>
-      <Route path='/shop'>
+      <Route exact path={['/', '/home']} component={HomePage}/>
+      <Route path='/plants'>
         <ShopPage/>
       </Route>
-      <Route path='/contact'>
+      <Route path='/accessories'>
+        <ShopPage/>
+      </Route>
+      <Route path='/gifts'>
+        <ShopPage/>
+      </Route>
+      <Route path='/offices'>
         <ContactPage/>
+      </Route>
+      <Route path='/profile'>
+        <SignInUpPage/>
       </Route>
       <Route path='/checkout'>
         <CheckoutPage/>
-      </Route>
-      <Route path='/signin'>
-        <SignInUpPage/>
       </Route>
     </Switch>
   </div>

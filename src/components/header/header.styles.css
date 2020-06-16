@@ -5,23 +5,13 @@
     justify-content: space-between;
 }
 
-.header a {     
-    text-decoration: none;
-    color: darkgrey;
-}
-
-.header-item {
+.branding {
     display: flex;
+    margin-right: 15px;
     flex-direction: row;
 }
 
-.header ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.header li {
-    list-style: none;
-    padding: 0px 10px;
+.branding img {
+    height: 60px;
+    width: 130px;
 }

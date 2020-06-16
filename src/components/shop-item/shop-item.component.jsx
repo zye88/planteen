@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 const ShopItem = ({item: {name, price, filename}}) => (
     <div className='shop-item'>
-        <img src={require(`../../assets/${filename}`)}/>
+        {/* <img src={require(`../../assets/${filename}`)}/> */}
         <div className='item-details'>
             <span>{name}</span>
             <span>${price}</span>

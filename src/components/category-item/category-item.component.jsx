@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 const CategoryItem = ({ category: {title, text, filename, path}}) => (
     <div className='category-item'>
-        <div className='category-left'>
+        {/* <div className='category-left'>
             <img src={require(`../../assets/${filename}`)}/>
         </div>
         <div className='category-right'>
@@ -15,7 +15,7 @@ const CategoryItem = ({ category: {title, text, filename, path}}) => (
                 label={'SHOP NOW'} 
                 handleClick={() => { console.log('sth happened')}}/>
             <div>{path}</div>
-        </div>
+        </div> */}
     </div>
 );
 
