@@ -15,3 +15,15 @@
     height: 60px;
     width: 130px;
 }
+
+.header .navigation {
+    max-width: 523px;
+}
+
+.header .navigation a {
+    font-weight: bold;
+}
+
+.header .navigation li:hover {
+    border-bottom: 2px solid #424242;
+}

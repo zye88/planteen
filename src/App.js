@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shoppage/shoppage.component';
 import ContactPage from './pages/contactpage/contactpage.component';
@@ -33,6 +34,7 @@ const App = () => (
         <CheckoutPage/>
       </Route>
     </Switch>
+    <Footer/>
   </div>
 );
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './navigation-bar.styles.css';
+import './navigation.styles.css';
 
-const NavigationBar = ({type='text', navItems, className=''}) => (
-    <ul className={`navigation-bar ${className}`}>
+const Navigation = ({type, navItems}) => (
+    <ul className='navigation'>
         {
             navItems.map(([label, link, image], indx) => (
                 <li key={indx}>
@@ -17,4 +17,4 @@ const NavigationBar = ({type='text', navItems, className=''}) => (
         }
     </ul>
 );
-export default NavigationBar;
+export default Navigation;
