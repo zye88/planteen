@@ -13,16 +13,19 @@ const Header = () => (
         <Link className='branding' to='/'>
             <img src={JomoLogo} alt='JOMO logo'/>
         </Link>
-        <Navigation type='text' 
-                        navItems={[['Plants', '/plants'], 
-                                ['Accessories', '/accessories'], 
-                                ['Gifts', '/gifts'], 
-                                ['Offices', '/offices'], 
-                                ['Services', '/services']]}/>
-        <Navigation type='image'
-                        navItems={[['Search', '/search', 'search-icon.svg'],
-                                ['Profile', '/profile', 'profile-icon.svg'],
-                                ['Cart', '/checkout', 'cart-icon.svg']]}/>
+        <Navigation 
+            type='text' 
+            className = 'header-mid-nav'
+            navItems={[['Plants', '/plants'], 
+                    ['Accessories', '/accessories'], 
+                    ['Gifts', '/gifts'], 
+                    ['Offices', '/offices'], 
+                    ['Services', '/services']]}/>
+        <Navigation 
+            type='image'
+            navItems={[['Search', '/search', 'search-icon.svg'],
+                    ['Profile', '/profile', 'profile-icon.svg'],
+                    ['Cart', '/checkout', 'cart-icon.svg']]}/>
     </div>);
 
 export default Header;

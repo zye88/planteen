@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './navigation.styles.css';
 
-const Navigation = ({type, navItems}) => (
-    <ul className='navigation'>
+const Navigation = ({type, navItems, className}) => (
+    <ul className={`navigation ${className}`}>
         {
             navItems.map(([label, link, image], indx) => (
                 <li key={indx}>

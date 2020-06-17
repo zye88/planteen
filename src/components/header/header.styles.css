@@ -16,14 +16,14 @@
     width: 130px;
 }
 
-.header .navigation {
+.header-mid-nav {
     max-width: 523px;
 }
 
-.header .navigation a {
+.header-mid-nav a {
     font-weight: bold;
 }
 
-.header .navigation li:hover {
+.header-mid-nav li:hover {
     border-bottom: 2px solid #424242;
 }

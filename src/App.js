@@ -14,7 +14,10 @@ const App = () => (
   <div className="App">
     <Header/>
     <Switch>
-      <Route exact path={['/', '/home']} component={HomePage}/>
+      <Route exact path={'/'} component={HomePage}/>
+      <Route path='/workshops'>
+        <ShopPage/>
+      </Route>
       <Route path='/plants'>
         <ShopPage/>
       </Route>

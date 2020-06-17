@@ -1,8 +1,15 @@
 .section {
+    width: 30vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-.section-info {
-    width: 30vw;
+.section-text span {
+    font-size: 10pt;
+}
+
+.section-buttons {
+    margin-top: 15px;
+    position: relative;
+    left: -10px;
 }

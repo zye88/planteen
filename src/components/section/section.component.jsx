@@ -1,21 +1,17 @@
 import React from 'react';
 import './section.styles.css';
+import CustomButton from '../custom-button/custom-button.component';
 
-import CustomButton from '../../components/custom-button/custom-button.component';
-
-const Section = ({title, info, buttons, image, className}) => (
-    <div className={`section ${className}`}>
-        <div className='section-info'>
+const InfoSection = ({title, info, buttons}) => (
+    <div className='section'>
+        <div className='section-text'>
             <h2>{title}</h2>
             <span>{info}</span>
-            {/* <CustomButton 
-                label={label} 
-                handleClick={handleClick}/> */}
         </div>
-        <div className='section-image'>
-            <img src={require(`../../assets/${image}`)}/>
+        <div className='section-buttons'>
+            {buttons.map(btn => <CustomButton {...btn}/>)}
         </div>
     </div>
 );
 
-export default Section;
+export default InfoSection;
