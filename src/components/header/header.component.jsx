@@ -13,13 +13,13 @@ const Header = () => (
         <Link className='branding' to='/'>
             <img src={JomoLogo} alt='JOMO logo'/>
         </Link>
-        <Navigation type={'text'} 
+        <Navigation type='text' 
                         navItems={[['Plants', '/plants'], 
                                 ['Accessories', '/accessories'], 
                                 ['Gifts', '/gifts'], 
                                 ['Offices', '/offices'], 
                                 ['Services', '/services']]}/>
-        <Navigation type={'image'}
+        <Navigation type='image'
                         navItems={[['Search', '/search', 'search-icon.svg'],
                                 ['Profile', '/profile', 'profile-icon.svg'],
                                 ['Cart', '/checkout', 'cart-icon.svg']]}/>

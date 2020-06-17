@@ -1,0 +1,8 @@
+.section {
+    display: flex;
+    flex-direction: row;
+}
+
+.section-info {
+    width: 30vw;
+}

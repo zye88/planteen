@@ -1,20 +1,18 @@
 import React from 'react';
 import './homepage.styles.css';
-import CATEGORIES from './categories.data';
+import HOMEPAGE_DATA from './homepage.data';
 
-import CategoryItem from '../../components/category-item/category-item.component';
+import Section from '../../components/section/section.component';
 
-const HomePage = () => (
-    <div className='homepage'>
-        <h2>HOMEPAGE</h2>
-        <div className='category-container'>
-            { 
-                CATEGORIES.map(category => <CategoryItem 
-                    key={category.id}
-                    category={category}/>)
-            }
+const HomePage = () => {
+    const { intro } = HOMEPAGE_DATA;
+    return (
+        <div className='homepage'>
+            <Section 
+                title={intro.title}
+                image={intro.image}
+                className='intro-section'/>
         </div>
-    </div>
-);
+)};
 
 export default HomePage;

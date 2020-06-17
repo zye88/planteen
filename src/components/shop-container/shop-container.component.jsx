@@ -7,7 +7,7 @@ import ShopItem from '../shop-item/shop-item.component';
 
 const ShopContainer = ({category}) => (
     <div className='shop-container'>
-        <h2>{'Low Light Plants'}</h2>
+        <h2></h2>
         <div className='shop-items'>
             {
                 SHOP_DATA[category].map(item => 
