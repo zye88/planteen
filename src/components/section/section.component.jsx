@@ -2,7 +2,7 @@ import React from 'react';
 import './section.styles.css';
 import CustomButton from '../custom-button/custom-button.component';
 
-const InfoSection = ({title, info, buttons}) => (
+const Section = ({title, info, buttons}) => (
     <div className='section'>
         <div className='section-text'>
             <h2>{title}</h2>
@@ -14,4 +14,4 @@ const InfoSection = ({title, info, buttons}) => (
     </div>
 );
 
-export default InfoSection;
+export default Section;

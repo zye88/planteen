@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+h2, span {
+  color: #424242;
+}
+
 a {
   text-decoration: none;
   color: #424242;

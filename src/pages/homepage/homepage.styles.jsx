@@ -1,23 +1,37 @@
 import styled, {css} from 'styled-components';
 
+const rowStyles = css`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 45px 0px;
+`;
+
 export const HomePageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
-const sectionStyles = css`
-    width: 100%;
-    margin: 45px 0px;
-`
+export const ShopSectionContainer = styled.div`
+    ${rowStyles}
 
-const rowStyles = css`
-    display: flex;
-    flex-direction: row;
+    .column-section {
+        margin: 0px 15px;
+        width: 250px;
+    }
+    
+    .section-text {
+        width: 250px;
+    }
+
+    img {
+        width: 250px;
+        height: 310px;
+    }
 `;
 
 export const IntroSectionContainer = styled.div`
-    ${sectionStyles}
     ${rowStyles}
 
     h2 {
@@ -26,14 +40,13 @@ export const IntroSectionContainer = styled.div`
     }
     
     .section-image {
-        height: 500px;
-        width: 600px;
+        width: 408px;
+        height: 424px;
         margin-left: 39px;
     }
 `;
 
 export const WorkshopSectionContainer = styled.div`
-    ${sectionStyles}
     ${rowStyles}
 
     .section-image {
@@ -44,7 +57,6 @@ export const WorkshopSectionContainer = styled.div`
 `;
 
 export const GiftSectionContainer = styled.div`
-    ${sectionStyles}
     ${rowStyles}
 
     .section-image {

@@ -1,0 +1,19 @@
+.partner-section {
+    margin: 20px 0px 45px 0px;
+    position: relative;
+    left: -20px;
+}
+
+.partner-section h2 {
+    font-size: 25pt;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.partner-section img {
+    max-width: 115px;
+    margin: 10px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+}

@@ -2,23 +2,32 @@ import React from 'react';
 import HOMEPAGE_DATA from './homepage.data';
 
 // Import components
-import InfoSection from '../../components/section/section.component';
+import Section from '../../components/section/section.component';
+import ColumnSection from '../../components/column-section/column-section.component';
+import PartnerSection from '../../components/partner-section/partner-section.component';
+import ReviewSection from '../../components/review-section/review-section.component';
 
 // Import styling components and images
 import {HomePageContainer, 
         IntroSectionContainer, 
         WorkshopSectionContainer,
-        GiftSectionContainer} from './homepage.styles';
-import introImage from '../../assets/intro-section-image.png';
-import workshopImage from '../../assets/planter-workshop-image.png';
-import giftImage from '../../assets/gift-image.png';
+        GiftSectionContainer,
+        ShopSectionContainer} from './homepage.styles';
+import introImage from '../../assets/intro-section.png';
+import workshopImage from '../../assets/planter-workshop.png';
+import giftImage from '../../assets/gift.png';
 
 const HomePage = () => {
-    const { intro, workshop, gift } = HOMEPAGE_DATA;
+    const { intro, 
+            workshop, 
+            gift, 
+            shopAirPlant, 
+            shopSnakePlant, 
+            shopFiddleLeafFig } = HOMEPAGE_DATA;
     return (
         <HomePageContainer>
             <IntroSectionContainer>
-                <InfoSection 
+                <Section 
                     { ...intro}
                     buttons={[
                         {                 
@@ -34,14 +43,41 @@ const HomePage = () => {
                         }]}/>
                 <img 
                     className='section-image'
-                    src={introImage} alt='Homepage Intro Image'/>
+                    src={introImage} alt={intro.title}/>
             </IntroSectionContainer>
+            <PartnerSection/>
+            <ShopSectionContainer>
+                <ColumnSection 
+                    { ...shopAirPlant}
+                    buttons={[
+                        {                 
+                            label: 'Shop Now',
+                            redirectLink: '/plants'
+                        }]}
+                    image='air-plant.png'/>
+                <ColumnSection 
+                    { ...shopSnakePlant}
+                    buttons={[
+                        {                 
+                            label: 'Shop Now',
+                            redirectLink: '/plants'
+                        }]}
+                    image='snake-plant.png'/>
+                <ColumnSection 
+                    { ...shopFiddleLeafFig}
+                    buttons={[
+                        {                 
+                            label: 'Shop Now',
+                            redirectLink: '/plants'
+                        }]}
+                    image='fiddle-leaf-fig.jpg'/>
+            </ShopSectionContainer>
             <WorkshopSectionContainer>
                 <img 
                     className='section-image'
-                    src={workshopImage} alt='Workshop Image'/>
-                <InfoSection 
-                    { ...gift}
+                    src={workshopImage} alt={workshop.title}/>
+                <Section 
+                    { ...workshop}
                     buttons={[
                         {                 
                             label: 'Book Now',
@@ -49,7 +85,7 @@ const HomePage = () => {
                         }]}/>
             </WorkshopSectionContainer>
             <GiftSectionContainer>
-                <InfoSection 
+                <Section 
                     { ...gift}
                     buttons={[
                         {                 
@@ -58,8 +94,9 @@ const HomePage = () => {
                         }]}/>
                     <img 
                     className='section-image'
-                    src={giftImage} alt='Gift Image'/>
+                    src={giftImage} alt={gift.title}/>
             </GiftSectionContainer>
+            <ReviewSection/>
         </HomePageContainer>
     )
 };
