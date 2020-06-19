@@ -10,7 +10,7 @@ const PartnerSection = () => {
         'sephora-logo.png',
         'sonos-logo.png'];
     return (
-        <div className='partner-section'>
+        <section className='partner-section'>
             <h2>You are in good company</h2>
             <div className='partner-logos'>
                 {
@@ -18,7 +18,7 @@ const PartnerSection = () => {
                         <img src={require(`../../assets/${fn}`)} alt='Partner Logo'/>)
                 }
             </div>
-        </div>
+        </section>
     );
 }
 

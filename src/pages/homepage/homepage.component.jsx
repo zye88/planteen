@@ -36,8 +36,8 @@ const HomePage = () => {
                         redirectLink: '/workshops'
                     }]}/>
             <img src={BlobImg} className='blob-image' alt='Blob Background Image'/>
-            {/* <PartnerSection/>
-            <ShopSectionContainer>
+            <PartnerSection/>
+            {/* <ShopSectionContainer>
                 <ColumnSection 
                     { ...shopAirPlant}
                     buttons={[
