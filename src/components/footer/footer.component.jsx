@@ -3,47 +3,45 @@ import Navigation from '../navigation/navigation.component';
 
 // Import images and style
 import './footer.styles.css';
-import InstaIcon from '../../assets/insta-icon.png';
-import FacebookIcon from '../../assets/facebook-icon.png';
+import InstaIcon from '../../assets/insta-icon.svg';
+import FacebookIcon from '../../assets/fb-icon.svg';
 
 const Footer = () => (
     <div className='footer'>
         <Navigation 
             type='text' 
-            className ='footer-links-left'
+            addClass='nav--col'
             navItems={[['About Us', '/about-us'], 
                     ['Contacts', '/contacts'], 
                     ['Plant Night', '/plant-night'], 
                     ['Plant Delivery', '/plant-delivery'], 
                     ['Become a Host', '/become-a-host']]}/>
-        <div className='footer-mid'>
-            <h2 className='footer-title'>
+        <div className='footer__subscribe'>
+            <h2>
                 Be the first to know about our latest workshops and newest plants
             </h2>
-            <form className='subcribe-box'>
-                <input type='email' className='subscribe-email' placeholder='Email Address'/>
-                <input type='submit' className='subscribe-button' value='Subscribe'/>
+            <form>
+                <input type='email' className='subscribe__email' placeholder='Email Address'/>
+                <input type='submit' className='subscribe__btn' value='Subscribe'/>
             </form>
-            <div className='social-media-links'>
+            <div className='footer__social'>
                 <a href='https://www.facebook.com/JOMO-Studio-568104506970827'>
-                    <img src={FacebookIcon} alt='JOMO Facebook Link'/>
+                    <img src={FacebookIcon} alt='Facebook Link'/>
                 </a>
                 <a href='https://www.instagram.com/jomostudio/'>
-                    <img src={InstaIcon} alt='JOMO Insta Link'/>
+                    <img src={InstaIcon} alt='Insta Link'/>
                 </a>
             </div>
-            <span className='footer-subtext'>
-                © 2020, JOMO Studio Inc. Accessibility
-            </span>
+            <p>&#169; 2020, JOMO Studio Inc. Accessibility</p>
         </div>
         <Navigation 
             type='text'
-            className ='footer-links-right'
+            addClass='nav--col'
             navItems={[['FAQs', '/faqs'], 
                     ['Refund Policy', '/refund-policy'], 
                     ['Privacy Policy', '/privacy-policy'], 
                     ['Terms of Service', '/terms-of-service'], 
-                    ['Guest Release & Waiver', '/guest-release-and-waiver']]}/>
+                    ['Guest Release and Waiver', '/guest-release-and-waiver']]}/>
     </div>
 
 

@@ -3,69 +3,90 @@
     grid-template-columns: 1fr 2fr 1fr;
     border-top: 1px solid lightgrey;
     padding-top: 30px;
-    text-align: center;
     color: #424242;
     height: 300px;
 }
 
-.footer .navigation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* ----------------------- */
+/* SIDE NAVIGATION */
+/* ----------------------- */
 
 .footer .navigation li {
     margin: 10px 0px;
 }
 
-.footer .navigation li:hover {
+.footer .navigation a {
+    border-bottom: 1px solid transparent;
+    font-size: 12px;
+    padding-bottom: 2px;
+}
+
+.footer .navigation a:hover {
     border-bottom: 1px solid #424242;
 }
 
-.footer-mid {
-    font-weight: bold;
-    font-size: 12pt;
+/* ----------------------- */
+/* SUBCRIPTION BOX STYLE */
+/* ----------------------- */
+.footer__subscribe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
-.footer-title {
-    font-size: 14pt;
-    font-weight: normal;
-    width: 300px;
+/* SUBSCRIPTION TEXT */
+.footer__subscribe h2 {
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    width: 60%;   
+    margin-bottom: 27px;
 }
 
-.footer-subtext {
-    font-size: 10pt;
-    font-weight: normal;
-    max-width: 150px;
+.footer__subscribe p {
+    font-size: 10px;
+    width: 30%;
+    text-align: center;
+    margin: 0;
 }
 
-.subcribe-box input {
-    display: block;
+/* SUBSCRIPTION FORM */
+.footer__subscribe form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-width: 50%;
+}
+
+.footer__subscribe input {
     border: 1px solid lightgrey;
     background-color: white;
-    width: 320px;
     height: 40px;
     font-size: 12pt;
     box-sizing: border-box;
     text-align: center;
 }
 
-.subscribe-button {
+.subscribe__btn {
     position: relative;
     top: -1px;
 }
 
-.subscribe-button:hover {
+.subscribe__btn:hover {
     border-color: black;
 }
 
-.social-media-links img {
-    height: 25px;
-    width: 25px;
+/* SOCIAL MEDIA */
+.footer__social {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15%;
+    padding: 36px 0;
+}
+
+.footer__social img {
+    height: 20px;
+    width: auto;
     opacity: 0.7;
-    padding: 15px;
 }
