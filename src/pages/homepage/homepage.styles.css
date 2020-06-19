@@ -1,7 +1,6 @@
 .homepage {
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 /* ----------------------- */
@@ -11,8 +10,7 @@
 .section--row {
     display: flex;
     flex-direction: row;
-    margin: 15px 0 45px 0;
-    justify-content: start;
+    justify-content: center;
 }
 
 .section--pic-right img {
@@ -22,6 +20,10 @@
 /* ----------------------- */
 /* INTRO SECTION */
 /* ----------------------- */
+.intro-section {
+    margin: 15px 0 45px 0;
+}
+
 .intro-section .section__text-btns {
     width: 40%;
 }
@@ -40,8 +42,104 @@
 }
 
 .blob-image {
-    z-index: -2;
+    z-index: -1;
     position: absolute;
     left: 58%;
     width: 400px;
+}
+/* ----------------------- */
+/* SHOP SECTION */
+/* ----------------------- */
+.shop-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0 45px 0;
+}
+
+.shop-section section {
+    width: 280px;
+}
+
+.shop-section .section__text {
+    width: 100%;
+}
+
+.shop-section img {
+    width: 270px;
+    height: auto;
+}
+
+.shop-section h2 {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.shop-section p {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.leaf-image {
+    position: absolute;
+    z-index: -1;
+    width: 310px;
+    top: 110%;
+    left: 8%;
+}
+
+/* ----------------------- */
+/* WORKSHOP SECTION */
+/* ----------------------- */
+.workshop-section {
+    margin: 45px 0 45px 0;
+}
+
+.workshop-section img {
+    width: 410px;
+    height: auto;
+    margin-right: 33px;
+}
+
+.workshop-section .section__text {
+    margin-top: 30px;
+    width: 90%;
+}
+
+.workshop-section h2 {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.workshop-section p {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+/* ----------------------- */
+/* GIFT SECTION */
+/* ----------------------- */
+.gift-section {
+    margin: 45px 0 45px 0;
+}
+
+.gift-section img {
+    width: 410px;
+    height: auto;
+    margin-left: 33px;
+}
+
+.gitf-section .section__text {
+    margin-top: 30px;
+    width: 90%;
+}
+
+.gift-section h2 {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.gift-section p {
+    font-size: 15px;
+    line-height: 20px;
 }

@@ -12,7 +12,7 @@ const PartnerSection = () => {
     return (
         <section className='partner-section'>
             <h2>You are in good company</h2>
-            <div className='partner-logos'>
+            <div>
                 {
                     partnerLogos.map(fn => 
                         <img src={require(`../../assets/${fn}`)} alt='Partner Logo'/>)

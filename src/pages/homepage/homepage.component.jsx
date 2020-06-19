@@ -10,6 +10,7 @@ import ReviewSection from '../../components/review-section/review-section.compon
 // Import styling components and images
 import './homepage.styles.css';
 import BlobImg from '../../assets/blob.svg';
+import LeafImg from '../../assets/leaf4.svg';
 
 const HomePage = () => {
     const { intro, 
@@ -21,7 +22,7 @@ const HomePage = () => {
     return (
         <div className='homepage'>
             <Section
-                addClass='section--row section--pic-right intro-section' 
+                addClass='section--row intro-section section--pic-right' 
                 { ...intro}
                 buttons={[
                     {                 
@@ -35,38 +36,36 @@ const HomePage = () => {
                         inverted: true,
                         redirectLink: '/workshops'
                     }]}/>
-            <img src={BlobImg} className='blob-image' alt='Blob Background Image'/>
+            <img src={BlobImg} className='blob-image' alt='Blob Background'/>
             <PartnerSection/>
-            {/* <ShopSectionContainer>
-                <ColumnSection 
+            <section className='shop-section'>
+                <Section 
                     { ...shopAirPlant}
+                    addClass='section--col'
                     buttons={[
                         {                 
                             label: 'Shop Now',
                             redirectLink: '/plants'
-                        }]}
-                    image='air-plant.png'/>
-                <ColumnSection 
+                        }]}/>
+                <Section 
                     { ...shopSnakePlant}
+                    addClass='section--col'
                     buttons={[
                         {                 
                             label: 'Shop Now',
                             redirectLink: '/plants'
-                        }]}
-                    image='snake-plant.png'/>
-                <ColumnSection 
+                        }]}/>
+                <Section 
                     { ...shopFiddleLeafFig}
+                    addClass='section--col'
                     buttons={[
                         {                 
                             label: 'Shop Now',
                             redirectLink: '/plants'
-                        }]}
-                    image='fiddle-leaf-fig.jpg'/>
-            </ShopSectionContainer>
-            <WorkshopSectionContainer>
-                <img 
-                    className='section-image'
-                    src={workshopImage} alt={workshop.title}/>
+                        }]}/>
+            </section>
+            <img src={LeafImg} className='leaf-image' alt='Leaf Background'/>
+            <section className='workshop-section'>
                 <Section 
                     { ...workshop}
                     buttons={[
@@ -74,8 +73,8 @@ const HomePage = () => {
                             label: 'Book Now',
                             redirectLink: '/workshops'
                         }]}/>
-            </WorkshopSectionContainer>
-            <GiftSectionContainer>
+            </section>
+            <section className='gift-section section--pic-right'>
                 <Section 
                     { ...gift}
                     buttons={[
@@ -83,11 +82,8 @@ const HomePage = () => {
                             label: 'Book Now',
                             redirectLink: '/gift'
                         }]}/>
-                    <img 
-                    className='section-image'
-                    src={giftImage} alt={gift.title}/>
-            </GiftSectionContainer>
-            <ReviewSection/>*/}
+            </section>
+            {/* <ReviewSection/> */}
         </div> 
     )
 };

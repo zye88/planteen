@@ -2,7 +2,7 @@ import React from 'react';
 import './section.styles.css';
 import CustomButton from '../custom-button/custom-button.component';
 
-const Section = ({title, info, buttons, image, addClass}) => (
+const Section = ({title, info, image, addClass, buttons}) => (
     <section className={`section ${addClass}`}>
         <img 
             className='section__img' 

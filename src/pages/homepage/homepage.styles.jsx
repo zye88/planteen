@@ -7,14 +7,7 @@
 //         width: 250px;
 //     }
     
-//     .section-text {
-//         width: 250px;
-//     }
 
-//     img {
-//         width: 250px;
-//         height: 310px;
-//     }
 // `;
 
 // export const IntroSectionContainer = styled.div`
