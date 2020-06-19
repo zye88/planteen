@@ -8,14 +8,8 @@ import PartnerSection from '../../components/partner-section/partner-section.com
 import ReviewSection from '../../components/review-section/review-section.component';
 
 // Import styling components and images
-import {HomePageContainer, 
-        IntroSectionContainer, 
-        WorkshopSectionContainer,
-        GiftSectionContainer,
-        ShopSectionContainer} from './homepage.styles';
-import introImage from '../../assets/intro-section.png';
-import workshopImage from '../../assets/planter-workshop.png';
-import giftImage from '../../assets/gift.png';
+import './homepage.styles.css';
+import BlobImg from '../../assets/blob.svg';
 
 const HomePage = () => {
     const { intro, 
@@ -25,27 +19,24 @@ const HomePage = () => {
             shopSnakePlant, 
             shopFiddleLeafFig } = HOMEPAGE_DATA;
     return (
-        <HomePageContainer>
-            <IntroSectionContainer>
-                <Section 
-                    { ...intro}
-                    buttons={[
-                        {                 
-                            label: 'Explore Plants',
-                            arrow: true,
-                            redirectLink: '/plants'
-                        },
-                        {
-                            label: 'Discover Workshops',
-                            arrow: true,
-                            inverted: true,
-                            redirectLink: '/workshops'
-                        }]}/>
-                <img 
-                    className='section-image'
-                    src={introImage} alt={intro.title}/>
-            </IntroSectionContainer>
-            <PartnerSection/>
+        <div className='homepage'>
+            <Section
+                addClass='section--row section--pic-right intro-section' 
+                { ...intro}
+                buttons={[
+                    {                 
+                        label: 'Explore Plants',
+                        arrow: true,
+                        redirectLink: '/plants'
+                    },
+                    {
+                        label: 'Discover Workshops',
+                        arrow: true,
+                        inverted: true,
+                        redirectLink: '/workshops'
+                    }]}/>
+            <img src={BlobImg} className='blob-image' alt='Blob Background Image'/>
+            {/* <PartnerSection/>
             <ShopSectionContainer>
                 <ColumnSection 
                     { ...shopAirPlant}
@@ -96,8 +87,8 @@ const HomePage = () => {
                     className='section-image'
                     src={giftImage} alt={gift.title}/>
             </GiftSectionContainer>
-            <ReviewSection/>
-        </HomePageContainer>
+            <ReviewSection/>*/}
+        </div> 
     )
 };
 

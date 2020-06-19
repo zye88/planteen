@@ -1,15 +1,13 @@
 .section {
-    width: 30vw;
     display: flex;
-    flex-direction: column;
 }
 
-.section-text span {
-    font-size: 10pt;
+.section__text p {
+    font-size: 15px;
 }
 
-.section-buttons {
+.section__btns {
     margin-top: 15px;
-    position: relative;
-    left: -10px;
+    display: flex;
+    flex-direction: row;
 }

@@ -1,6 +1,7 @@
 const HOMEPAGE_DATA = {
     intro: {
         title: 'Plants and Workshops that you\'ll actually love.',
+        image: 'intro-section.png'
     },
     workshop: {
         title: 'Concrete Planter Making Workshop',

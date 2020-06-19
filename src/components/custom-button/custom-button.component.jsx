@@ -1,12 +1,14 @@
 import React from 'react';
-import {CustomButtonContainer} from './custom-button.styles';
 import arrowRight from '../../assets/arrow-right.svg';
+import './custom-button.styles.css';
 
 const CustomButton = ({label, handleClick, arrow=false, inverted=false}) => (
-    <CustomButtonContainer onClick={handleClick} inverted={inverted}>
-        <span>{label}</span>
-        {/* {arrow? <img src={arrowRight} alt='Custom Button Arrow'/>: ''} */}
-    </CustomButtonContainer>
+    <button 
+        className={`custom-btn ${inverted? 'btn--inverted':''}`}
+        onClick={handleClick}>
+        <p>{label}</p>
+        {arrow? <img src={arrowRight} alt='Arrow Right Image'/>: ''}
+    </button>
 );
 
 export default CustomButton;

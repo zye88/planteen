@@ -1,0 +1,44 @@
+/* ----------------------- */
+/* BUTTON STYLES */
+/* ----------------------- */
+.custom-btn {
+    background-color: #FFEC00;
+    border: none;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 45px;
+    padding: 0 15px;
+    margin: 5px 18px 5px 0;
+}
+
+.custom-btn p {
+    margin: auto;
+}
+
+.custom-btn img {
+    width: 15px;
+    margin: auto 0 auto 5px;
+}
+
+.custom-btn:hover {
+    background-color: #CDBD01;
+}
+
+.custom-btn:focus {
+    outline: none;
+}
+
+/* ----------------------- */
+/* INVERTED BUTTON STYLES */
+/* ----------------------- */
+.btn--inverted {
+    background-color: white;
+    border: 1px solid rgb(19, 19, 19);
+}
+
+.btn--inverted:hover {
+    background-color: white;
+    border-color: #CDBD01;
+    color: #CDBD01
+}
