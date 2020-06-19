@@ -9,13 +9,13 @@ import './header.styles.css';
 import JomoLogo from '../../assets/jomo-logo.png';
 
 const Header = () => (
-    <div className='header'>
-        <Link className='branding' to='/'>
+    <header className='header'>
+        <Link className='header__branding' to='/'>
             <img src={JomoLogo} alt='JOMO logo'/>
         </Link>
         <Navigation 
             type='text' 
-            className = 'header-mid-nav'
+            addClass = 'header__nav--1'
             navItems={[['Plants', '/plants'], 
                     ['Accessories', '/accessories'], 
                     ['Gifts', '/gifts'], 
@@ -23,9 +23,10 @@ const Header = () => (
                     ['Services', '/services']]}/>
         <Navigation 
             type='image'
+            addClass='header__nav--2'
             navItems={[['Search', '/search', 'search-icon.svg'],
                     ['Profile', '/profile', 'profile-icon.svg'],
                     ['Cart', '/checkout', 'cart-icon.svg']]}/>
-    </div>);
+    </header>);
 
 export default Header;

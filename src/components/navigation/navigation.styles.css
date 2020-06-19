@@ -1,4 +1,4 @@
-.navigation {
+.navigation ul {
     display: flex;
     flex-direction: row;
     padding: 0px;
@@ -7,9 +7,4 @@
 .navigation li {
     list-style: none;
     margin: 0px 10px;
-}
-
-.navigation img {
-    height: 32px;
-    width: 27px;
 }

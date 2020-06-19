@@ -15,7 +15,10 @@ const invertedStyles = css`
 
     &:hover {
         border-color: #CDBD01;
-        color: #CDBD01;
+        
+        span {
+            color: #CDBD01
+        };
     }
 `;
 

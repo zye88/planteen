@@ -1,10 +1,14 @@
 import React from 'react';
+import REVIEW_DATA from '../review-slider/review.data';
 
 // Import styles and images
 import './review-section.styles.css';
 import AirbnbLogo from '../../assets/airbnb-logo.png';
 import GoogleReviews from '../../assets/google-reviews.png'
 import Rating from '../../assets/rating.png';
+
+// Import components
+import ReviewSlider from '../review-slider/review-slider.component';
 
 const ReviewSection = () => (
     <div className='review-section'>
@@ -18,8 +22,7 @@ const ReviewSection = () => (
                 <img src={GoogleReviews} alt='Google Logo'/>
             </div>
         </div>
-        <div className='review-listings'>
-        </div>
+        <ReviewSlider/>
     </div>
 );
 

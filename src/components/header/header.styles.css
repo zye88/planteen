@@ -1,29 +1,55 @@
 .header {
     padding: 10px 0px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
-.branding {
+/* ----------------------- */
+/* HEADER BRANDING */
+/* ----------------------- */
+
+.header__branding img {
+    width: 120px;
+    height: auto;
+}
+
+/* ----------------------- */
+/* HEADER NAV 1 */
+/* ----------------------- */
+
+.header__nav--1 {
+    width: 40%;
+}
+
+.header__nav--1 ul {
     display: flex;
-    margin-right: 15px;
-    flex-direction: row;
+    justify-content: space-between;
 }
 
-.branding img {
-    height: 60px;
-    width: 130px;
+.header__nav--1 a:link,
+.header__nav--1 a:visited {
+    font-size: 12px;
+    font-weight: 600;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+
 }
 
-.header-mid-nav {
-    max-width: 523px;
-}
-
-.header-mid-nav a {
-    font-weight: bold;
-}
-
-.header-mid-nav li:hover {
+.header__nav--1 a:hover,
+.header__nav--1 a:active {
     border-bottom: 2px solid #424242;
+}
+
+/* ----------------------- */
+/* HEADER NAV 2 */
+/* ----------------------- */
+
+.header__nav--2 {
+    width: 20%;
+    display: flex;
+}
+
+.header__nav--2 img {
+    width: 18px;
+    height: auto;
 }
