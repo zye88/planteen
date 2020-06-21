@@ -7,11 +7,11 @@ const Navigation = ({type, navItems, addClass}) => (
     <nav className={`navigation ${addClass}`}>
         <ul>
             {
-                navItems.map(([label, link, image], indx) => (
+                navItems.map(([label, linkUrl, image], indx) => (
                     <li key={indx}>
-                        <Link to={link}> 
+                        <Link to={linkUrl}> 
                             { type === 'text'? label:
-                            <img src={require(`../../assets/${image}`)} alt={`${label} Icon`}/>}
+                            <img src={require(`../../img/${image}`)} alt={label}/>}
                         </Link>
                     </li>
                 ))

@@ -1,0 +1,11 @@
+.shoppage h2 {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.shoppage__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0;
+    margin: 0;
+}

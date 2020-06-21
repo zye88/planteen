@@ -1,19 +1,24 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import './shop-item.styles.css';
 
 import CustomButton from '../custom-button/custom-button.component';
 
-const ShopItem = ({item: {name, price, filename}}) => (
+const ShopItem = ({id, name, price, image, match}) => (
     <div className='shop-item'>
-        {/* <img src={require(`../../assets/${filename}`)}/> */}
-        <div className='item-details'>
-            <span>{name}</span>
-            <span>${price}</span>
-        </div>
+        <img 
+            className='item__img'
+            src={require(`../../img/${image}`)} 
+            alt={name}/>
         <CustomButton
-            label='ADD TO CART' 
-            handleClick={() => console.log('Added to cart')}/>
+            label='view details' 
+            addClass='btn--white'
+            linkUrl={`${match.url}/${id}`}/>
+        <div className='item__details'>
+            <span className='item__name'>{name}</span>
+            <span className='item__price'>${price}</span>
+        </div>
     </div>
 );
 
-export default ShopItem;
+export default withRouter(ShopItem);

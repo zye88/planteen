@@ -1,13 +1,6 @@
 .navigation ul {
     display: flex;
-    flex-direction: row;
     padding: 0px;
-}
-
-.nav--col ul {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
 }
 
 .navigation li {

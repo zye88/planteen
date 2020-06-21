@@ -1,14 +1,15 @@
 import React from 'react';
-import arrowRight from '../../assets/arrow-right.svg';
+import {withRouter} from 'react-router-dom';
 import './custom-button.styles.css';
 
-const CustomButton = ({label, handleClick, arrow=false, inverted=false}) => (
+const CustomButton = ({label, linkUrl, handleClick, addClass, history}) => (
     <button 
-        className={`custom-btn ${inverted? 'btn--inverted':''}`}
-        onClick={handleClick}>
+        className={`custom-btn ${addClass}`}
+        onClick={linkUrl? 
+                    () => {history.push(linkUrl)}: 
+                    handleClick}>
         <p>{label}</p>
-        {arrow? <img src={arrowRight} alt='Arrow Right Image'/>: ''}
     </button>
 );
 
-export default CustomButton;
+export default withRouter(CustomButton);

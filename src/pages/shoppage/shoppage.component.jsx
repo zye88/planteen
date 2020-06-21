@@ -1,13 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import ShopItem from '../../components/shop-item/shop-item.component';
+import { selectCategory } from '../../redux/shop/shop.selectors';
+
 import './shoppage.styles.css';
 
-import ShopContainer from '../../components/shop-container/shop-container.component';
 
-const ShopPage = () => (
+const ShopPage = ({selectCategory}) => {
+    const { title, items} = selectCategory;
+    return (
     <div className='shoppage'>
-        SHOP PAGE
-        <ShopContainer category='low'/>
+        <h2>{title}</h2>
+        <div className='shoppage__items'>
+            {
+                items.map(item => <ShopItem 
+                                        key={item.id}
+                                        {...item}/>)
+            }
+        </div>
     </div>
-);
+)};
 
-export default ShopPage;
+const mapStateToProps = (state, ownProps) => ({
+    selectCategory: selectCategory(ownProps.match.params.category)(state)
+});
+
+export default connect(mapStateToProps)(ShopPage);

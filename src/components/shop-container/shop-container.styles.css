@@ -1,9 +1,0 @@
-.shop-container {
-    position: relative;
-    width: 75vw;
-}
-
-.shop-items {
-    display: flex;
-    flex-wrap: wrap;
-}

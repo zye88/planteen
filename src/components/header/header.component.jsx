@@ -6,27 +6,26 @@ import Navigation from '../navigation/navigation.component';
 
 // Import style and images
 import './header.styles.css';
-import JomoLogo from '../../assets/jomo-logo.png';
+import LeafLogo from '../../img/leaf.svg';
 
 const Header = () => (
     <header className='header'>
         <Link className='header__branding' to='/'>
-            <img src={JomoLogo} alt='JOMO logo'/>
+            <img src={LeafLogo} alt='Leaf logo'/>
+            <h2>Planteen</h2>
         </Link>
         <Navigation 
             type='text' 
             addClass = 'header__nav--1'
-            navItems={[['Plants', '/plants'], 
-                    ['Accessories', '/accessories'], 
-                    ['Gifts', '/gifts'], 
-                    ['Offices', '/offices'], 
-                    ['Services', '/services']]}/>
+            navItems={[['Plants', '/shop/plants'], 
+                    ['Accessories', '/shop/accessories'], 
+                    ['Gifts', '/shop/gifts'], 
+                    ['Contact Us', '/contact-us']]}/>
         <Navigation 
             type='image'
             addClass='header__nav--2'
-            navItems={[['Search', '/search', 'search-icon.svg'],
-                    ['Profile', '/profile', 'profile-icon.svg'],
-                    ['Cart', '/checkout', 'cart-icon.svg']]}/>
+            navItems={[['Sign In', '/sign-in-up', 'profile.svg'],
+                    ['Cart', '/checkout', 'cart.svg']]}/>
     </header>);
 
 export default Header;
