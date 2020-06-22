@@ -1,0 +1,22 @@
+.care-container {
+    margin-bottom: 30px;
+}
+
+.care__item {
+    display: flex;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.care__item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.care__item span {
+    text-align: left;
+    width: 200px;
+    border-bottom: 2px solid #6DCD82;
+    padding-bottom: 8px;
+}

@@ -2,12 +2,9 @@
     background-color: #6DCD82;
     border: none;
     height: 45px;
-    padding: 0 15px;
+    padding: 0 20px;
     color: white;
-}
-
-.custom-btn p {
-    margin: auto;
+    font-weight: 600;
 }
 
 .custom-btn:focus {
@@ -15,6 +12,8 @@
 }
 
 .btn--white {
+    border-radius: 0;
+    font-weight: 300;
     text-transform: uppercase;
     background-color: white;
     border: 1px solid black;

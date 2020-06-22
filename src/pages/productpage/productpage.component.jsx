@@ -1,24 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+// Redux-related imports
 import { connect } from 'react-redux';
 import { selectProductDetails } from '../../redux/shop/shop.selectors';
-import CustomButton from '../../components/custom-button/custom-button.component';
-import './productpage.styles.css';
+import { addCartItem } from '../../redux/cart/cart.action';
 
-const ProductPage = ({selectProductDetails}) => {
-    const { name, price, image, description, care} = selectProductDetails;
-    console.log(selectProductDetails);
+// Component imports
+import CustomButton from '../../components/custom-button/custom-button.component';
+import CareContainer from '../../components/care-container/care-container.component';
+
+// Style-related imports
+import './productpage.styles.css';
+import backIcon from '../../img/chevron-back-outline.svg';
+
+const ProductPage = ({productDetails, match, addCartItem}) => {
+    const { id, name, price, image, description, care} = productDetails;
+    const formattedCategory = match.params.category.charAt(0).toUpperCase() + 
+                                match.params.category.slice(1);
     return (
     <div className='productpage'>
-        <div className='product__col--1'>
-            <img src={require(`../../img/${image}`)} alt={name}/>
-        </div>
-        <div className='product__col--2'>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <p>{care}</p>
-            <CustomButton
-                label={`Add To Cart - $${price}`}
-                handleClick={() => {}}/>
+        <Link className='to-category' to={`/shop/${match.params.category}`}>
+            <img src={backIcon} alt='Back Icon'/>
+            <span>Back to {formattedCategory}</span>
+        </Link>
+        <div className='product-container'>
+            <div className='product__col--1'>
+                <img src={require(`../../img/${image}`)} alt={name}/>
+            </div>
+            <div className='product__col--2'>
+                <h2>{name}</h2>
+                <p>{description}</p>
+                {care? <CareContainer care={care}/> : ''}
+                <CustomButton
+                    label={`Add To Cart - $${price}`}
+                    handleClick={() => 
+                        addCartItem({ id, name, price, image })}/>
+            </div>
         </div>
     </div>
 )};
@@ -26,7 +44,12 @@ const ProductPage = ({selectProductDetails}) => {
 const mapStatetoProps = (state, ownProps) => {
     const { category, id } = ownProps.match.params;
     return {
-        selectProductDetails: selectProductDetails(category, id)(state)
+        productDetails: selectProductDetails(category, id)(state)
     }
 }
-export default connect(mapStatetoProps)(ProductPage);
+
+const mapDispatchToProps = dispatch => ({
+    addCartItem: item => dispatch(addCartItem(item))
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(ProductPage);

@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 import './navigation.styles.css';
 
-const Navigation = ({type, navItems, addClass}) => (
+const Navigation = ({navItems, addClass}) => (
     <nav className={`navigation ${addClass}`}>
         <ul>
             {
-                navItems.map(([label, linkUrl, image], indx) => (
+                navItems.map(([label, linkUrl], indx) => (
                     <li key={indx}>
                         <Link to={linkUrl}> 
-                            { type === 'text'? label:
-                            <img src={require(`../../img/${image}`)} alt={label}/>}
+                            {label}
                         </Link>
                     </li>
                 ))

@@ -1,0 +1,38 @@
+.productpage {
+    display: flex;
+    flex-direction: column;
+}
+
+.to-category {
+    display: flex;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.to-category img {
+    width: 15px;
+    height: auto;
+    margin-right: 3px;
+}
+
+.product-container {
+    display: flex;
+}
+
+.product__col--1 {
+    margin-right: 30px;
+}
+
+.product__col--1 img {
+    width: 400px;
+    height: auto;
+}
+
+.product__col--2 h2 {
+    margin: 0 0 30px 0;
+}
+
+.product__col--2 p {
+    margin: 0 0 30px 0;
+}

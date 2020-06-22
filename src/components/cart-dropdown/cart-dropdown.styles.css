@@ -1,0 +1,45 @@
+.cart-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 18%;
+    border: solid grey 1px;
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+}
+
+.cart-dropdown ul {
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown__item {
+    list-style: none;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.dropdown__item img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.item__info {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.item__info span {
+    width: 100%;
+}
+
+.item__name {
+    font-weight: 500;
+}
+
+.cart-dropdown .custom-btn {
+    width: 100%;
+}
