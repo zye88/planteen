@@ -11,19 +11,22 @@ const CartDropdown = ({ cartItems, toggleCartHidden, cartHidden }) => {
     console.log(cartItems);
     return (
     <div className='cart-dropdown'>
-        <ul>
-            {
-                cartItems.map(({id, name, price, image, count}) => 
-                    <li key={id} className='dropdown__item'>
-                        <img src={require(`../../img/${image}`)}/>
-                        <div className='item__info'>
-                            <span className='item__name'>{name}</span>
-                            <span>{count} x ${price}</span>
-                        </div>
-                    </li>
-                )
-            }
-        </ul>
+        { cartItems.length?
+            <ul>
+                {
+                    cartItems.map(({id, name, price, image, quantity}) => 
+                        <li key={id} className='dropdown__item'>
+                            <img src={require(`../../img/${image}`)}/>
+                            <div className='item__info'>
+                                <span className='item__name'>{name}</span>
+                                <span>{quantity} x ${price}</span>
+                            </div>
+                        </li>
+                    )
+                }
+            </ul>:
+            <span className='empty-message'>Empty Cart...</span>
+        }
         <CustomButton 
             label='GO TO CHECKOUT' 
             linkUrl='/checkout' 

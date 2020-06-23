@@ -15,7 +15,7 @@ export const updateCartItem = (id, quantity) => ({
     quantity
 });
 
-export const clearCartItem = (id) => ({
-    type: CartActionTypes.CLEAR_ITEM,
+export const removeCartItem = (id) => ({
+    type: CartActionTypes.REMOVE_CART_ITEM,
     id
 });

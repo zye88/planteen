@@ -31,7 +31,7 @@ const ProductPage = ({productDetails, match, addCartItem}) => {
             <div className='product__col--2'>
                 <h2>{name}</h2>
                 <p>{description}</p>
-                {care? <CareContainer care={care}/> : ''}
+                {care? <CareContainer id={id} care={care}/> : ''}
                 <CustomButton
                     label={`Add To Cart - $${price}`}
                     handleClick={() => 

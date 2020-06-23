@@ -43,3 +43,11 @@
 .cart-dropdown .custom-btn {
     width: 100%;
 }
+
+.empty-message {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -7,8 +7,8 @@ import { selectCategory } from '../../redux/shop/shop.selectors';
 import './shoppage.styles.css';
 
 
-const ShopPage = ({selectCategory}) => {
-    const { title, items} = selectCategory;
+const ShopPage = ({category}) => {
+    const { title, items} = category;
     return (
     <div className='shoppage'>
         <h2>{title}</h2>
@@ -23,7 +23,7 @@ const ShopPage = ({selectCategory}) => {
 )};
 
 const mapStateToProps = (state, ownProps) => ({
-    selectCategory: selectCategory(ownProps.match.params.category)(state)
+    category: selectCategory(ownProps.match.params.category)(state)
 });
 
 export default connect(mapStateToProps)(ShopPage);

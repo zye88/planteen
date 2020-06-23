@@ -27,7 +27,7 @@ const Header = ({ cartHidden, toggleCartHidden}) => (
             navItems={[['Plants', '/shop/plants'], 
                     ['Accessories', '/shop/accessories'], 
                     ['Gifts', '/shop/gifts'], 
-                    ['Contact Us', '/contact-us']]}/>
+                    ['Contact Us', '/contact']]}/>
         <div className='header__nav--2'>
             <Link to='/sign-in-up'>
                 <img src={profileIcon} alt='Profile'/>
