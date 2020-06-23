@@ -1,0 +1,42 @@
+.checkout__summary {
+    table-layout: fixed;
+}
+
+.checkout__summary th {
+    color: #6DCD82;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.checkout__summary td {
+    width: 220px;
+    padding: 10px;
+    text-align: center;
+}
+
+.item__desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.item__desc span {
+    text-align: left;
+}
+
+.item__desc img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+.item__quantity img {
+    position: relative;
+    top: 5px;
+    width: 20px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.item__quantity input {
+    width: 50px;
+}
