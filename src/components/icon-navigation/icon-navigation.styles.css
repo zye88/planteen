@@ -1,0 +1,20 @@
+.icon-navigation {
+    width: fit-content;
+    display: flex;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.icon-navigation div {
+    margin-left: 20px;
+}
+
+.icon-navigation img {
+    width: 18px;
+    height: auto;
+}
+
+.icon--active,
+.icon-navigation img:hover {
+    filter: invert(73%) sepia(57%) saturate(341%) hue-rotate(80deg) brightness(90%) contrast(87%);
+}

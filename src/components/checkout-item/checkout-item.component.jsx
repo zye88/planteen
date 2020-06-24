@@ -1,39 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeCartItem, updateCartItem } from '../../redux/cart/cart.action';
+import { removeCartItem, addCartItem, clearCartItem } from '../../redux/cart/cart.action';
+
 import './checkout-item.styles.css';
 import trashIcon from '../../img/trash-outline.svg';
+import incIcon from '../../img/chevron-forward-outline.svg';
+import descIcon from '../../img/chevron-back-outline.svg';
 
-const CheckoutItem = ({item: {id, image, name, price, quantity}, 
-        removeCartItem, 
-        updateCartItem}) => {
-    
-    const handleChange = e => {
-        const newQty = e.target.value;
-        const itemId = e.target.dataset.id;
-        updateCartItem(itemId, parseInt(newQty));
-    }
-
+const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
+    const { id, image, name, price, quantity } = item;
     return (
         <li className='checkout-item'>
             <div className='item__desc'>
-                <img src={require(`../../img/${image}`)}/>
+                <img src={require(`../../img/${image}`)} alt='Product Item'/>
                 <span>
                     {name}
                 </span>
             </div>
             <div className='item__quantity'>
-                <img 
+                <img
+                    className='clear-icon' 
                     src={trashIcon} 
-                    onClick={() => removeCartItem(id)}
+                    onClick={() => clearCartItem(id)}
                     alt='Remove'/>
-                <input 
-                    type='number' 
-                    data-id={id}
-                    defaultValue={quantity}
-                    onChange={handleChange}
-                    min='0'
-                    step='1'/>
+                <div>
+                    <img 
+                        className='update-icon' 
+                        src={descIcon} 
+                        alt='Decrease' 
+                        onClick={() => removeCartItem(id)}/>
+                    <span>{quantity}</span>
+                    <img 
+                        className='update-icon' 
+                        src={incIcon} 
+                        alt='Increase'
+                        onClick={() => addCartItem(item)}/>
+                </div>
             </div>
             <div>
                 <span className='item__price'>${price}</span>
@@ -46,7 +48,8 @@ const CheckoutItem = ({item: {id, image, name, price, quantity},
 
 const mapDispatchToState = dispatch => ({
     removeCartItem: id => dispatch(removeCartItem(id)),
-    updateCartItem: (id, quantity) => dispatch(updateCartItem(id, quantity))
+    clearCartItem: id => dispatch(clearCartItem(id)),
+    addCartItem: item => dispatch(addCartItem(item))
 });
 
 export default connect(null, mapDispatchToState)(CheckoutItem);

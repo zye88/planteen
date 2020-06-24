@@ -1,9 +1,15 @@
 import CartActionTypes from './cart.types';
-import { updateItem, addItem, removeItem } from './cart.utils';
+import { addItem, removeItem } from './cart.utils';
 
 const INITIAL_STATE = {
     cartHidden: true,
-    cartItems: []
+    cartItems: [{
+        id: 0,
+        name: 'Fiddle Leaf Fig 0',
+        price: 30,
+        image: 'fiddle-leaf-fig.jpg',
+        quantity: 1
+    }]
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -22,15 +28,15 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 cartItems: addItem(action.item, state.cartItems)
             }
-        case CartActionTypes.UPDATE_CART_ITEM:
-            return {
-                ...state,
-                cartItems: updateItem(action.id, action.quantity, state.cartItems)
-            }
         case CartActionTypes.REMOVE_CART_ITEM:
             return {
                 ...state,
                 cartItems: removeItem(action.id, state.cartItems)
+            }
+        case CartActionTypes.CLEAR_CART_ITEM:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(item => item.id !== action.id)
             }
         default:
             return state;

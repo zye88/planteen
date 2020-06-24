@@ -6,7 +6,7 @@ const SHOP_DATA = {
         items: 
         [
             {
-                id: uniqid(),
+                id: 0,
                 name: 'Fiddle Leaf Fig 0',
                 price: 30,
                 image: 'fiddle-leaf-fig.jpg',

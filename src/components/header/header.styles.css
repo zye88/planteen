@@ -4,9 +4,6 @@
     margin-bottom: 40px;
 }
 
-/* ----------------------- */
-/* HEADER BRANDING */
-/* ----------------------- */
 .header__branding {
     display: flex;
     margin: 7px 0;
@@ -21,48 +18,4 @@
 .header__branding h2 {
     color: #6DCD82;
     margin: 0;
-}
-
-/* ----------------------- */
-/* HEADER NAV 1 */
-/* ----------------------- */
-.header__nav--1 {
-    width: 40%;
-}
-
-.header__nav--1 ul {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header__nav--1 a:link,
-.header__nav--1 a:visited {
-    font-size: 15px;
-    font-weight: 600;
-    padding-bottom: 5px;
-    border-bottom: 2px solid transparent;
-}
-
-.header__nav--1 a:hover,
-.header__nav--1 a:active {
-    color: #6DCD82;
-    border-bottom: 2px solid #6DCD82;
-}
-
-/* ----------------------- */
-/* HEADER NAV 2 */
-/* ----------------------- */
-.header__nav--2 {
-    width: 15%;
-    display: flex;
-    margin-top: 10px;
-}
-
-.header__nav--2 a {
-    margin-right: 20px;
-}
-
-.header__nav--2 img {
-    width: 18px;
-    height: auto;
 }

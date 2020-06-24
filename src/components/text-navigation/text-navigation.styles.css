@@ -1,0 +1,26 @@
+.text-navigation {
+    width: 40%;
+}
+.text-navigation ul {
+    display: flex;
+    padding: 0px;
+    justify-content: space-between;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 0px 10px;
+}
+
+.text-navigation a {
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+.text-navigation a:hover,
+.nav-item--active a {
+    color: #6DCD82;
+    border-bottom: 2px solid #6DCD82;
+}

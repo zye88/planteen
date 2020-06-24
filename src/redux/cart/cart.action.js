@@ -9,13 +9,12 @@ export const addCartItem = item => ({
     item
 });
 
-export const updateCartItem = (id, quantity) => ({
-    type: CartActionTypes.UPDATE_CART_ITEM,
-    id,
-    quantity
+export const removeCartItem = id => ({
+    type: CartActionTypes.REMOVE_CART_ITEM,
+    id
 });
 
-export const removeCartItem = (id) => ({
-    type: CartActionTypes.REMOVE_CART_ITEM,
+export const clearCartItem = id => ({
+    type: CartActionTypes.CLEAR_CART_ITEM,
     id
 });

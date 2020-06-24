@@ -4,7 +4,7 @@ import './custom-button.styles.css';
 
 const CustomButton = ({label, linkUrl, handleClick, addClass, history}) => (
     <button 
-        className={`custom-btn ${addClass}`}
+        className={`custom-btn ${addClass? addClass: ''}`}
         onClick={() => {
             if(linkUrl) history.push(linkUrl);
             if(handleClick) handleClick();
