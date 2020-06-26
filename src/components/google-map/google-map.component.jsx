@@ -30,7 +30,7 @@ class GoogleMap extends Component {
     return (
       <div
         ref={this.googleMapRef}
-        style={{ width: '300px', height: '400px' }}
+        style={{ width: '350px', height: '450px' }}
       />);
   }
 }

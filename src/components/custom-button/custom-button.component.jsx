@@ -2,9 +2,9 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './custom-button.styles.css';
 
-const CustomButton = ({label, linkUrl, handleClick, addClass, history}) => (
+const CustomButton = ({label, linkUrl, handleClick, white, history}) => (
     <button 
-        className={`custom-btn ${addClass? addClass: ''}`}
+        className={`custom-btn ${white? 'btn--white': 'btn--standard'}`}
         onClick={() => {
             if(linkUrl) history.push(linkUrl);
             if(handleClick) handleClick();

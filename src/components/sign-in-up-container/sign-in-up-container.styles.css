@@ -1,0 +1,26 @@
+.sign-in-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-in-up-container h2 {
+    font-size: 18px;
+}
+
+.sign-in-up-container .custom-btn {
+    width: 220px;
+    margin: 20px auto 10px auto;
+}
+
+.sign-in-up-form div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.change-sign-up-in-btn {
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px 0;
+}

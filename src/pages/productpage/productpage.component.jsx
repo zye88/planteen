@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { capFirstWord } from '../../components/component.utils.js';
 
 // Redux-related imports
 import { connect } from 'react-redux';
@@ -16,8 +17,7 @@ import backIcon from '../../img/chevron-back-outline.svg';
 
 const ProductPage = ({productDetails, match, addCartItem}) => {
     const { id, name, price, image, description, care} = productDetails;
-    const formattedCategory = match.params.category.charAt(0).toUpperCase() + 
-                                match.params.category.slice(1);
+    const formattedCategory = capFirstWord(match.params.category)
     return (
     <div className='productpage'>
         <Link className='to-category' to={`/shop/${match.params.category}`}>

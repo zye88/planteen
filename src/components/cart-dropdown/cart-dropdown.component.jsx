@@ -7,9 +7,7 @@ import { toggleCartHidden } from '../../redux/cart/cart.action';
 
 import CustomButton from '../custom-button/custom-button.component';
 
-const CartDropdown = ({ cartItems, toggleCartHidden, cartHidden }) => {
-    console.log(cartItems);
-    return (
+const CartDropdown = ({ cartItems, toggleCartHidden, cartHidden }) => (
     <div className='cart-dropdown'>
         { cartItems.length?
             <ul>
@@ -32,7 +30,7 @@ const CartDropdown = ({ cartItems, toggleCartHidden, cartHidden }) => {
             linkUrl='/checkout' 
             handleClick={() => { if(!cartHidden) toggleCartHidden(); }}/>
     </div>
-)};
+);
 
 const mapStateToProps = state => ({
     cartItems: selectCartItems(state),

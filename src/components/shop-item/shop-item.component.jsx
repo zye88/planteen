@@ -12,7 +12,7 @@ const ShopItem = ({id, name, price, image, match}) => (
             alt={name}/>
         <CustomButton
             label='view details' 
-            addClass='btn--white'
+            white
             linkUrl={`${match.url}/${id}`}/>
         <div className='item__details'>
             <span className='item__name'>{name}</span>
