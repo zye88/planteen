@@ -15,7 +15,7 @@ const IconNavigation = ({toggleCartHidden, location}) => (
             <img 
                 src={profileIcon} 
                 alt='Profile'
-                className={location.pathname === '/sign-in-up'? 'icon--active': ''}/>
+                className={['/sign-in-up', '/welcome'].indexOf(location.pathname) > -1 ? 'icon--active': ''}/>
         </Link>
         <div onClick={toggleCartHidden}>
             <img 

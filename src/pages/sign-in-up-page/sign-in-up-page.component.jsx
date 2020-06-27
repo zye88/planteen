@@ -9,15 +9,7 @@ class SignInUpPage extends Component {
     constructor() {
         super();
         this.state = {
-            signup: false
-        }
-    }
-
-    handleSignIn = async platform => {
-        try {
-            await signInWithPlatform(platform);
-        } catch(err) {
-            console.log('Failed to sign in:', err);
+            signup: true // TESTING
         }
     }
 
@@ -25,14 +17,20 @@ class SignInUpPage extends Component {
         return (
             <div className='sign-in-up'>
                 <div className='social-acct-signinup'>
+                    <div className='sign-in-options'/>
                     <CustomButton 
-                        label='Sign In With Google' 
-                        handleClick={() => this.handleSignIn('google')}/>
+                        label='Sign In With Google'
+                        googleSignIn
+                        handleClick={() => signInWithPlatform('google')}/>
                     <CustomButton 
                         label='Sign In With Facebook' 
-                        handleClick={() => this.handleSignIn('facebook')}/>
+                        facebookSignIn
+                        handleClick={() => signInWithPlatform('facebook')}/>
                 </div>
-                <SignInUpContainer signup={this.state.signup} changeComponent={() => {this.setState({ signup: !this.state.signup})}}/>
+                <SignInUpContainer 
+                    signup={this.state.signup} 
+                    changeComponent={() => 
+                        {this.setState({ signup: !this.state.signup})}}/>
             </div>
         );
     }

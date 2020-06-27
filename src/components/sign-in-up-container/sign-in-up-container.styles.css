@@ -13,7 +13,7 @@
     margin: 20px auto 10px auto;
 }
 
-.sign-in-up-form div {
+.sign-in-up-form {
     display: flex;
     flex-direction: column;
     text-align: center;

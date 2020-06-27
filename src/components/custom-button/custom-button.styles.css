@@ -28,3 +28,23 @@
     visibility: hidden;
     transition: visibility 0.2s;
 }
+
+.btn-google {
+    background-color: #4285F4;
+}
+
+.btn-google:hover {
+    background-color:white;
+    border: 1px solid  #4285F4;
+    color:  #4285F4;
+}
+
+.btn-facebook {
+    background-color: #4267B2;
+}
+
+.btn-facebook:hover {
+    background-color:white;
+    border: 1px solid  #4267B2;
+    color:  #4267B2
+}

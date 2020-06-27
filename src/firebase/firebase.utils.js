@@ -21,17 +21,44 @@ export const db = firebase.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account'});
 
-const facebookProvider = {};
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+facebookProvider.setCustomParameters({'display': 'popup'});
+facebookProvider.addScope('email');
 
-const providers = {
+export const providers = {
   google: googleProvider,
   facebook: facebookProvider
 };
 
-export const signInWithPlatform = platform => 
-  auth.signInWithPopup(providers[platform]);
+export const signUpWithEmail = async (inputEmail, inputPassword, displayName) => {
+  try {
+    const {user: {uid, email}} = 
+      await auth.createUserWithEmailAndPassword(inputEmail, inputPassword);
+    createUserProfile(uid, email, displayName);
+  } catch(err) {
+    console.log('Failed to sign up with email:', err);
+  }
+}
 
-export const createUserProfile = async ({uid, email, displayName }) => {
+export const signInWithEmail = async (email, password) => {
+  try {
+    const result = await auth.signInWithEmailAndPassword(email, password);
+    console.log(result);
+  } catch(err) {
+    console.log('Failed to sign in with email:', err);
+  }
+}
+
+export const signInWithPlatform = async platform => {
+  try {
+    const {user: {uid, email, displayName}} = await auth.signInWithPopup(providers[platform]);
+    createUserProfile(uid, email, displayName);
+  } catch(err) {
+    console.log(`Failed to sign in with ${platform}:`, err);
+  }
+}
+
+const createUserProfile = async (uid, email, displayName) => {
   const userRef = await db.doc(`users/${uid}`);
   const snapShot = await userRef.get();
   
@@ -43,11 +70,8 @@ export const createUserProfile = async ({uid, email, displayName }) => {
         displayName,
         createdAt: new Date()
       });
-
     } catch(err) {
       console.log('Error in firebase profile creation:', err);
     }
   }
-
-  return userRef;
 }

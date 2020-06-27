@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
-import { auth, createUserProfile } from './firebase/firebase.utils';
+import { auth, db, createUserProfile } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
@@ -24,7 +24,7 @@ class App extends Component {
     this.unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
           try {
-            const userRef = await createUserProfile(userAuth);
+            const userRef = db.doc(`users/${userAuth.uid}`);
             userRef.onSnapshot(snapshot => { 
               this.props.setCurrentUser(snapshot.data());
             });
@@ -34,8 +34,7 @@ class App extends Component {
       } else {
         this.props.setCurrentUser(null);
       }
-    });
-  }
+    })};
 
   componentWillUnmount() {
     this.unsubscribe();
