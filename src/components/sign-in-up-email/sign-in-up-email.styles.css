@@ -1,19 +1,19 @@
-.sign-in-up-container {
+.sign-in-up-email {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.sign-in-up-container h2 {
+.sign-in-up-email h2 {
     font-size: 18px;
 }
 
-.sign-in-up-container .custom-btn {
+.sign-in-up-email .custom-btn {
     width: 220px;
     margin: 20px auto 10px auto;
 }
 
-.sign-in-up-form {
+.email-form {
     display: flex;
     flex-direction: column;
     text-align: center;

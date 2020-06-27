@@ -2,10 +2,18 @@ import React from 'react';
 import './form-input.styles.css';
 import { capFirstWord } from '../component.utils';
 
-const FormInput = ({placeholder, type, error, name, required, handleChange}) => (
+const FormInput = ({
+    placeholder, 
+    type, 
+    value, 
+    error, 
+    name, 
+    required, 
+    handleChange}) => (
     <div className='form-input'>
         <input 
             name={name}
+            value={value}
             type={type} 
             placeholder={capFirstWord(placeholder)} 
             onChange={handleChange}

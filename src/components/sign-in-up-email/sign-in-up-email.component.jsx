@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { signUpWithEmail, signInWithEmail } from '../../firebase/firebase.utils';
-import './sign-in-up-container.styles.css';
+import './sign-in-up-email.styles.css';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-const SignInUpContainer = ({ signup, changeComponent }) => {
+const SignInUpEmail = ({ signup, toggleSignup }) => {
     const [credentials, setCredentials] = useState({
         displayName: '',
         email: '',
@@ -17,13 +17,13 @@ const SignInUpContainer = ({ signup, changeComponent }) => {
         confirmError: ''
     });
 
-    useEffect(() => {
-        console.log('signup changed');
-        clearAllInput();
-    }, [signup]);
-
     const { displayName, email, password, confirmPassword } = credentials;
     const { confirmError } = validationErrors;
+
+    useEffect(() => {
+        clearAllInput();
+        clearAllErrors();
+    }, [signup]);
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -31,6 +31,8 @@ const SignInUpContainer = ({ signup, changeComponent }) => {
     }
 
     const validateInput = () => {
+        clearAllErrors();
+
         if(signup && confirmPassword) {
             setValidationErrors({...validationErrors, 
                 confirmError: password !== confirmPassword? 
@@ -46,6 +48,9 @@ const SignInUpContainer = ({ signup, changeComponent }) => {
             password: '',
             confirmPassword: ''
         });
+    }
+
+    const clearAllErrors = () => {
         setValidationErrors({
             confirmError: ''
         });
@@ -62,12 +67,14 @@ const SignInUpContainer = ({ signup, changeComponent }) => {
         } else {
             signInWithEmail(email, password);
         };
+
+        clearAllInput();
     }
 
     return (
-        <div className='sign-in-up-container'>
+        <div className='sign-in-up-email'>
             <h2>{ signup? 'Setup an account now': 'Sign in now'}</h2>
-            <form className='sign-in-up-form' onSubmit={handleSubmit}>
+            <form className='email-form' onSubmit={handleSubmit}>
                 {signup?
                     <FormInput 
                         name='displayName'
@@ -105,10 +112,10 @@ const SignInUpContainer = ({ signup, changeComponent }) => {
             </form>
             <span 
                 className='change-sign-up-in-btn' 
-                onClick={changeComponent}>{signup? 
+                onClick={toggleSignup}>{signup? 
                     'Back to Sign In':'Go to Sign Up'}</span>
         </div>
     )
 };
 
-export default SignInUpContainer;
+export default SignInUpEmail;

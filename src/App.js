@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
-import { auth, db, createUserProfile } from './firebase/firebase.utils';
+import { auth, db } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { setCart } from './redux/cart/cart.action';
+import { selectCartItems } from './redux/cart/cart.selectors';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -20,7 +22,7 @@ import WelcomePage from './pages/welcomepage/welcomepage.component';
 class App extends Component {
   unsubscribe;
 
-  componentDidMount() {
+  setUser() {
     this.unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
           try {
@@ -34,7 +36,31 @@ class App extends Component {
       } else {
         this.props.setCurrentUser(null);
       }
-    })};
+    });
+  }
+
+  setCartItems() {
+    const localCart = localStorage.getItem('cartItems');
+    if(this.props.currentUser) {
+      // If signed in
+      // if local storage -> add to user's cart and clear local Storage
+      // update redux cart to user cart
+    } else {
+      if(!localCart) localCart.setItem('cartItem', JSON.stringify([]));
+      this.props.setCart(JSON.parse(localCart));
+      // If signed out
+      // if local storage -> update redux cart to local storage cart
+      // if no local storage -> create local storage
+    }
+
+    
+    
+  }
+
+  componentDidMount() {
+    this.setUser();
+    this.setCartItems();
+  };
 
   componentWillUnmount() {
     this.unsubscribe();
@@ -62,11 +88,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state)
+  currentUser: selectCurrentUser(state),
+  cartItems: selectCartItems(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  setCart: cartItems => dispatch(setCart(cartItems))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -18,3 +18,8 @@ export const clearCartItem = id => ({
     type: CartActionTypes.CLEAR_CART_ITEM,
     id
 });
+
+export const setCart = cartItems => ({
+    type: CartActionTypes.SET_CART,
+    cartItems
+})

@@ -68,7 +68,7 @@ const createUserProfile = async (uid, email, displayName) => {
         uid,
         email,
         displayName,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
     } catch(err) {
       console.log('Error in firebase profile creation:', err);
