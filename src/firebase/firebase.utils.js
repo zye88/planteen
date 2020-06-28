@@ -3,7 +3,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
-
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -43,7 +42,6 @@ export const signUpWithEmail = async (inputEmail, inputPassword, displayName) =>
 export const signInWithEmail = async (email, password) => {
   try {
     const result = await auth.signInWithEmailAndPassword(email, password);
-    console.log(result);
   } catch(err) {
     console.log('Failed to sign in with email:', err);
   }
@@ -58,6 +56,23 @@ export const signInWithPlatform = async platform => {
   }
 }
 
+export const updateCartDoc  = async (uid, cart) => {
+  const cartRef = await db.doc(`carts/${uid}`);
+  try {
+    await cartRef.set({cartItems: JSON.stringify(cart)});
+  } catch(err) {
+    console.log('Error in updating cart in storage:', err);
+  }
+}
+
+export const signOutUser = async () => {
+  try {
+      await auth.signOut();
+  } catch(err) {
+      console.log('Failed to sign out:', err);
+  }
+}
+
 const createUserProfile = async (uid, email, displayName) => {
   const userRef = await db.doc(`users/${uid}`);
   const snapShot = await userRef.get();
@@ -68,7 +83,7 @@ const createUserProfile = async (uid, email, displayName) => {
         uid,
         email,
         displayName,
-        createdAt: new Date(),
+        createdAt: new Date()
       });
     } catch(err) {
       console.log('Error in firebase profile creation:', err);

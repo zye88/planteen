@@ -1,9 +1,11 @@
 import CartActionTypes from './cart.types';
+import UserActionTypes from '../user/user.types';
 import { addItem, removeItem, clearItem } from './cart.utils';
 
 const INITIAL_STATE = {
     cartHidden: true,
-    cartItems: []
+    cartItems: [],
+    userUid: null
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -20,17 +22,23 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.ADD_CART_ITEM:
             return {
                 ...state,
-                cartItems: addItem(action.item, state.cartItems)
+                cartItems: addItem(action.item, state.cartItems, state.userUid)
             }
         case CartActionTypes.REMOVE_CART_ITEM:
             return {
                 ...state,
-                cartItems: removeItem(action.id, state.cartItems)
+                cartItems: removeItem(action.id, state.cartItems, state.userUid)
             }
         case CartActionTypes.CLEAR_CART_ITEM:
             return {
                 ...state,
-                cartItems: clearItem(action.id, state.cartItems)
+                cartItems: clearItem(action.id, state.cartItems, state.userUid)
+            }
+        case UserActionTypes.SET_CURRENT_USER:
+            return {
+                ...state,
+                cartItems: action.user? state.cartItems: [],
+                userUid: action.user? action.user.uid: null
             }
         default:
             return state;

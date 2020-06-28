@@ -1,6 +1,6 @@
 import React from 'react';
 import './welcomepage.styles.css';
-import { auth } from '../../firebase/firebase.utils';
+import { signOutUser } from '../../firebase/firebase.utils';
 
 import CustomButton from '../../components/custom-button/custom-button.component';
 
@@ -12,13 +12,7 @@ const WelcomePage = ({currentUser }) => (
         <h2>Welcome {currentUser.displayName}</h2>
         <CustomButton
             label='Logout' 
-            handleClick={ async () => {
-                try {
-                    await auth.signOut();
-                } catch(err) {
-                    console.log('Failed to sign out:', err);
-                }
-            }}/>
+            handleClick={signOutUser}/>
     </div>
 );
 

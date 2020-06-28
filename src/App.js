@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
-import { auth, db } from './firebase/firebase.utils';
+import { auth, db, updateCartDoc } from './firebase/firebase.utils';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCart } from './redux/cart/cart.action';
 import { selectCartItems } from './redux/cart/cart.selectors';
+import { mergeCarts } from './redux/cart/cart.utils';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -20,50 +21,42 @@ import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import WelcomePage from './pages/welcomepage/welcomepage.component';
 
 class App extends Component {
-  unsubscribe;
+  authUnsubscribe;
 
-  setUser() {
-    this.unsubscribe = auth.onAuthStateChanged(async userAuth => {
+  componentDidMount() {
+    const { setCurrentUser, setCart } = this.props;
+
+    this.authUnsubscribe = auth.onAuthStateChanged(userAuth => {
+      const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
-            userRef.onSnapshot(snapshot => { 
-              this.props.setCurrentUser(snapshot.data());
+
+            const snapShotUnsubscribe = userRef.onSnapshot(async snapshot => {
+              snapShotUnsubscribe();
+              const { email, displayName } = snapshot.data();
+              setCurrentUser({ uid: snapshot.id, email, displayName});
+
+              const cartRef = await db.doc(`carts/${snapshot.id}`).get();
+              let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
+              if(localCart) userCart = mergeCarts(JSON.parse(localCart), userCart);
+
+              updateCartDoc(snapshot.id, userCart);
+              setCart(userCart);
+              localStorage.setItem('cartItems', JSON.stringify([]));
             });
           } catch(err) {
             console.log('Error in retrieving user profile data from firebase:', err);
           }
       } else {
-        this.props.setCurrentUser(null);
+        setCurrentUser(null);
+        setCart(JSON.parse(localCart));
       }
     });
-  }
-
-  setCartItems() {
-    const localCart = localStorage.getItem('cartItems');
-    if(this.props.currentUser) {
-      // If signed in
-      // if local storage -> add to user's cart and clear local Storage
-      // update redux cart to user cart
-    } else {
-      if(!localCart) localCart.setItem('cartItem', JSON.stringify([]));
-      this.props.setCart(JSON.parse(localCart));
-      // If signed out
-      // if local storage -> update redux cart to local storage cart
-      // if no local storage -> create local storage
-    }
-
-    
-    
-  }
-
-  componentDidMount() {
-    this.setUser();
-    this.setCartItems();
   };
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this.authUnsubscribe();
   }
 
   render() {
