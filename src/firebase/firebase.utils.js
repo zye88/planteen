@@ -7,7 +7,7 @@ const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    projectId: process.env. REACT_APP_FIREBASE_PROJECT_ID,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID
@@ -33,7 +33,7 @@ export const signUpWithEmail = async (inputEmail, inputPassword, displayName) =>
   try {
     const {user: {uid, email}} = 
       await auth.createUserWithEmailAndPassword(inputEmail, inputPassword);
-    createUserProfile(uid, email, displayName);
+    createUserDoc(uid, email, displayName);
   } catch(err) {
     console.log('Failed to sign up with email:', err);
   }
@@ -41,7 +41,7 @@ export const signUpWithEmail = async (inputEmail, inputPassword, displayName) =>
 
 export const signInWithEmail = async (email, password) => {
   try {
-    const result = await auth.signInWithEmailAndPassword(email, password);
+    auth.signInWithEmailAndPassword(email, password);
   } catch(err) {
     console.log('Failed to sign in with email:', err);
   }
@@ -50,7 +50,7 @@ export const signInWithEmail = async (email, password) => {
 export const signInWithPlatform = async platform => {
   try {
     const {user: {uid, email, displayName}} = await auth.signInWithPopup(providers[platform]);
-    createUserProfile(uid, email, displayName);
+    createUserDoc(uid, email, displayName);
   } catch(err) {
     console.log(`Failed to sign in with ${platform}:`, err);
   }
@@ -73,7 +73,7 @@ export const signOutUser = async () => {
   }
 }
 
-const createUserProfile = async (uid, email, displayName) => {
+const createUserDoc = async (uid, email, displayName) => {
   const userRef = await db.doc(`users/${uid}`);
   const snapShot = await userRef.get();
   

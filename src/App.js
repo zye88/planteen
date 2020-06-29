@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { auth, db, updateCartDoc } from './firebase/firebase.utils';
 import './App.css';
 
-import { auth, db, updateCartDoc } from './firebase/firebase.utils';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from './stripe/stripe.utils';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
@@ -19,32 +21,35 @@ import ContactPage from './pages/contactpage/contactpage.component';
 import CheckoutPage from './pages/checkoutpage/checkoutpage.component';
 import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import WelcomePage from './pages/welcomepage/welcomepage.component';
+import OrderPage from './pages/orderpage/orderpage.component';
 
 class App extends Component {
   authUnsubscribe;
+  snapshotUnsubscribe;
 
   componentDidMount() {
     const { setCurrentUser, setCart } = this.props;
 
-    this.authUnsubscribe = auth.onAuthStateChanged(userAuth => {
+    this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
 
-            const snapShotUnsubscribe = userRef.onSnapshot(async snapshot => {
-              snapShotUnsubscribe();
+            this.snapshotUnsubscribe = userRef.onSnapshot(snapshot => {
+              if(!snapshot.exists) return;
+
               const { email, displayName } = snapshot.data();
               setCurrentUser({ uid: snapshot.id, email, displayName});
-
-              const cartRef = await db.doc(`carts/${snapshot.id}`).get();
-              let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
-              if(localCart) userCart = mergeCarts(JSON.parse(localCart), userCart);
-
-              updateCartDoc(snapshot.id, userCart);
-              setCart(userCart);
-              localStorage.setItem('cartItems', JSON.stringify([]));
             });
+
+            const cartRef = await db.doc(`carts/${userAuth.uid}`).get();
+            let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
+            if(localCart) userCart = mergeCarts(JSON.parse(localCart), userCart);
+
+            updateCartDoc(userAuth.id, userCart);
+            setCart(userCart);
+            localStorage.setItem('cartItems', JSON.stringify([]));
           } catch(err) {
             console.log('Error in retrieving user profile data from firebase:', err);
           }
@@ -57,6 +62,7 @@ class App extends Component {
 
   componentWillUnmount() {
     this.authUnsubscribe();
+    this.snapshotUnsubscribe();
   }
 
   render() {
@@ -74,6 +80,11 @@ class App extends Component {
             currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
           <Route path='/welcome' render={() =>
             currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
+          <Route path='/order-now'>
+            <Elements stripe={stripePromise}>
+              <OrderPage/>
+            </Elements>
+          </Route>
         </Switch>
       </div>
     );

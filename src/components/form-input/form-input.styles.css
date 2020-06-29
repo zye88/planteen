@@ -1,7 +1,16 @@
 .form-input {
     display: flex;
-    flex-direction: column;
     margin: 10px 0;
+}
+
+.input__label {
+    width: 120px;
+    font-size: 15px;
+}
+
+.input__error {
+    display: flex;
+    flex-direction: column;
 }
 
 .form-input input {

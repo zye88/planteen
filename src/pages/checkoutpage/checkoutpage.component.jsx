@@ -2,12 +2,13 @@ import React from 'react';
 import './checkoutpage.styles.css';
 
 import { connect } from 'react-redux';
-import { selectCartItems, selectCartTotals } from '../../redux/cart/cart.selectors';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
+import OrderSummary from '../../components/order-sumary/order-summary.component';
 
-const CheckOutPage = ({cartItems, cartTotals: [total, tax, totalWithTax]}) => (
+const CheckOutPage = ({cartItems}) => (
     <div className='checkoutpage'>
         <div className='checkout__heading'>
             <span>Item</span>
@@ -24,12 +25,8 @@ const CheckOutPage = ({cartItems, cartTotals: [total, tax, totalWithTax]}) => (
                             item={item}/>)
                     }
                 </ul>
-                <div className='container__summary'>
-                    <span>Total (excl. tax): ${total.toFixed(2)}</span>
-                    <span>Tax: ${tax.toFixed(2)}</span>
-                    <span>Total (incl. tax): ${totalWithTax.toFixed(2)}</span>
-                </div>
-                <CustomButton label='PAY NOW' handleClick={() => {}}/>
+                <OrderSummary/>
+                <CustomButton label='PAY NOW' linkUrl='/order-now'/>
             </div>
             :
             <span className='empty-checkout-msg'>
@@ -41,7 +38,6 @@ const CheckOutPage = ({cartItems, cartTotals: [total, tax, totalWithTax]}) => (
 
 const mapStateToProps = state => ({
     cartItems: selectCartItems(state),
-    cartTotals: selectCartTotals(state)
 });
 
 export default connect(mapStateToProps)(CheckOutPage);

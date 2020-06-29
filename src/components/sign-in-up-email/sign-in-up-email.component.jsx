@@ -78,21 +78,21 @@ const SignInUpEmail = ({ signup, toggleSignup }) => {
                 {signup?
                     <FormInput 
                         name='displayName'
-                        placeholder='display name' 
+                        placeholder='Display Name' 
                         type='text' 
                         value={displayName} 
                         handleChange={handleChange}
                         required/>:''}
                 <FormInput 
                     name='email'
-                    placeholder='email' 
+                    placeholder='Email' 
                     type='email' 
                     value={email} 
                     handleChange={handleChange}
                     required/>
                 <FormInput 
                     name='password'
-                    placeholder='password' 
+                    placeholder='Password' 
                     type='password' 
                     value={password} 
                     handleChange={handleChange}
@@ -100,7 +100,7 @@ const SignInUpEmail = ({ signup, toggleSignup }) => {
                 { signup? 
                     <FormInput 
                         name='confirmPassword'
-                        placeholder='confirm password' 
+                        placeholder='Confirm password' 
                         type='password' 
                         value={confirmPassword} 
                         handleChange={handleChange}

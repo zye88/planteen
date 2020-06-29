@@ -1,0 +1,34 @@
+.orderpage {
+    display: flex;
+}
+
+.shipping-address {
+    margin-bottom: 50px;
+    width: fit-content;
+}
+
+.orderpage h2 {
+    font-size: 20px;
+    margin: 0 0 30px 0;
+}
+
+.orderpage .form-input input {
+    text-align: left;
+}
+
+.summary-section {
+    border: 1px solid #6DCD82;
+    padding: 18px 35px;
+    height: fit-content;
+    margin-left: 80px;
+}
+
+.orderpage .order-summary span {
+    margin: 5px 0;
+    text-align: right;
+    font-weight: 400;
+}
+
+.orderpage .custom-btn {
+    width: 100%;
+}

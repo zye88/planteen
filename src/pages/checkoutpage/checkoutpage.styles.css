@@ -23,13 +23,6 @@
     margin-bottom: 15px;
 }
 
-.container__summary {
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
 .checkout__container .custom-btn {
     width: 200px;
 }

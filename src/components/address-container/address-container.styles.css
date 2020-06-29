@@ -1,0 +1,17 @@
+.address__province {
+    display: flex;
+    margin: 25px 0;
+}
+
+.address__province label {
+    width: 120px;
+    font-size: 15px;
+}
+
+.address__province select {
+    width: 250px;
+}
+
+.address__province select:focus {
+    outline: none;
+}

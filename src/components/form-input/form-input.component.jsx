@@ -1,24 +1,31 @@
 import React from 'react';
 import './form-input.styles.css';
-import { capFirstWord } from '../component.utils';
 
 const FormInput = ({
+    label,
     placeholder, 
     type, 
     value, 
     error, 
     name, 
     required, 
+    readOnly,
     handleChange}) => (
     <div className='form-input'>
-        <input 
-            name={name}
-            value={value}
-            type={type} 
-            placeholder={capFirstWord(placeholder)} 
-            onChange={handleChange}
-            required={required}/>
-        <span className='validation-error'>{error? error: ''}</span>
+        {label? 
+            <label className='input__label'>{label}</label>:
+             ''}
+        <div className='input__error'>
+            <input 
+                name={name}
+                value={value}
+                type={type} 
+                placeholder={placeholder} 
+                onChange={handleChange}
+                required={required}
+                readOnly={readOnly}/>
+            <span className='validation-error'>{error? error: ''}</span>
+        </div>
     </div>
 );
 
