@@ -9,7 +9,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 const CartDropdown = ({ cartItems, toggleCartHidden, cartHidden }) => (
     <div className='cart-dropdown'>
-        { cartItems && cartItems.length?
+        { cartItems.length?
             <ul>
                 {
                     cartItems.map(({id, name, price, image, quantity}) => 

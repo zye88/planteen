@@ -27,15 +27,14 @@ class App extends Component {
   localCartInit() {
     if(!localStorage.getItem('cartItems')) 
       localStorage.setItem('cartItems', JSON.stringify([]));
-    return localStorage.getItem('cartItems');
   }
 
   componentDidMount() {
     const { setCurrentUser, setCart } = this.props;
-    const localCart = this.localCartInit();
+    this.localCartInit();
 
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
-      console.log(userAuth);
+      const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
