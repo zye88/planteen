@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6aef7b2a.chunk.css",
+    "main.js": "/static/js/main.0501a61c.chunk.js",
+    "main.js.map": "/static/js/main.0501a61c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c6ab4222.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c6ab4222.js.map",
+    "static/js/2.e0c6a5b9.chunk.js": "/static/js/2.e0c6a5b9.chunk.js",
+    "static/js/2.e0c6a5b9.chunk.js.map": "/static/js/2.e0c6a5b9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1e336af5dec48c7541a1bfa44cc0cb38.js": "/precache-manifest.1e336af5dec48c7541a1bfa44cc0cb38.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.6aef7b2a.chunk.css.map": "/static/css/main.6aef7b2a.chunk.css.map",
+    "static/js/2.e0c6a5b9.chunk.js.LICENSE.txt": "/static/js/2.e0c6a5b9.chunk.js.LICENSE.txt",
+    "static/media/aperture-outline.svg": "/static/media/aperture-outline.f86e1ed6.svg",
+    "static/media/cart.svg": "/static/media/cart.76237921.svg",
+    "static/media/chevron-back-outline.svg": "/static/media/chevron-back-outline.d9704d15.svg",
+    "static/media/chevron-forward-outline.svg": "/static/media/chevron-forward-outline.9e301916.svg",
+    "static/media/fb-logo.svg": "/static/media/fb-logo.3437099e.svg",
+    "static/media/fiddle-leaf-fig.jpg": "/static/media/fiddle-leaf-fig.2b7c8bfb.jpg",
+    "static/media/gift.png": "/static/media/gift.5e74cac0.png",
+    "static/media/insta-logo.svg": "/static/media/insta-logo.831e8fd5.svg",
+    "static/media/leaf.svg": "/static/media/leaf.b34c4f79.svg",
+    "static/media/plant-accessory.png": "/static/media/plant-accessory.52e364c6.png",
+    "static/media/profile.svg": "/static/media/profile.8cbbe6c3.svg",
+    "static/media/sunny-outline.svg": "/static/media/sunny-outline.373d00e0.svg",
+    "static/media/trash-outline.svg": "/static/media/trash-outline.fa9ede80.svg",
+    "static/media/water-outline.svg": "/static/media/water-outline.6871c628.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c6ab4222.js",
+    "static/js/2.e0c6a5b9.chunk.js",
+    "static/css/main.6aef7b2a.chunk.css",
+    "static/js/main.0501a61c.chunk.js"
+  ]
+}

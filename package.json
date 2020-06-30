@@ -1,50 +1,26 @@
 {
-  "name": "plant-shop",
-  "version": "0.1.0",
+  "name": "planteen",
+  "version": "1.0.0",
+  "repository": "https://github.com/zye88/plant-shop.git",
+  "author": "Zheng Ye",
   "engines": {
-    "node": "13.11.0"
-  },
-  "private": true,
-  "dependencies": {
-    "@stripe/react-stripe-js": "^1.1.2",
-    "@stripe/stripe-js": "^1.7.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "firebase": "^7.15.4",
-    "google-maps-react": "^2.0.6",
-    "heroku": "^7.42.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "reselect": "^4.0.0",
-    "uniqid": "^5.2.0"
+    "node": "13.11.0",
+    "yarn": "1.22.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "build": "cd client && yarn build",
+    "dev": "concurrently --kill-others-on-fail 'yarn server' 'yarn client'",
+    "heroku-postbuild": "cd client && yarn install && yarn install --prod=false && yarn build"
+    },
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "compression": "^1.7.4",
+    "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "stripe": "^8.67.0"
   }
 }
