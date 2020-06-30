@@ -36,6 +36,7 @@ class App extends Component {
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
+          console.log('auth object', userAuth);
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
 
