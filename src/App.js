@@ -3,9 +3,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { auth, db, updateCartDoc } from './firebase/firebase.utils';
 import './App.css';
 
-import { Elements } from '@stripe/react-stripe-js';
-import { stripePromise } from './stripe/stripe.utils';
-
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -31,6 +28,7 @@ class App extends Component {
     const { setCurrentUser, setCart } = this.props;
 
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
+      console.log(userAuth);
       const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
@@ -62,7 +60,7 @@ class App extends Component {
 
   componentWillUnmount() {
     this.authUnsubscribe();
-    this.snapshotUnsubscribe();
+    if(this.snapshotUnsubscribe) this.snapshotUnsubscribe();
   }
 
   render() {
@@ -80,11 +78,7 @@ class App extends Component {
             currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
           <Route path='/welcome' render={() =>
             currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
-          <Route path='/order-now'>
-            <Elements stripe={stripePromise}>
-              <OrderPage/>
-            </Elements>
-          </Route>
+          <Route path='/order-now' component={OrderPage}/>
         </Switch>
       </div>
     );

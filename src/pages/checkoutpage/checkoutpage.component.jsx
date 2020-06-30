@@ -6,7 +6,7 @@ import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
-import OrderSummary from '../../components/order-sumary/order-summary.component';
+import OrderSummary from '../../components/order-summary/order-summary.component';
 
 const CheckOutPage = ({cartItems}) => (
     <div className='checkoutpage'>
