@@ -24,12 +24,18 @@ class App extends Component {
   authUnsubscribe;
   snapshotUnsubscribe;
 
+  localCartInit() {
+    if(!localStorage.getItem('cartItems')) 
+      localStorage.setItem('cartItems', JSON.stringify([]));
+    return localStorage.getItem('cartItems');
+  }
+
   componentDidMount() {
     const { setCurrentUser, setCart } = this.props;
+    const localCart = this.localCartInit();
 
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       console.log(userAuth);
-      const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
@@ -43,7 +49,7 @@ class App extends Component {
 
             const cartRef = await db.doc(`carts/${userAuth.uid}`).get();
             let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
-            if(localCart) userCart = mergeCarts(JSON.parse(localCart), userCart);
+            userCart = mergeCarts(JSON.parse(localCart), userCart);
 
             updateCartDoc(userAuth.id, userCart);
             setCart(userCart);
