@@ -36,7 +36,6 @@ class App extends Component {
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
-          console.log('auth object', userAuth);
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
 
@@ -51,7 +50,7 @@ class App extends Component {
             let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
             userCart = mergeCarts(JSON.parse(localCart), userCart);
 
-            updateCartDoc(userAuth.id, userCart);
+            updateCartDoc(userAuth.uid, userCart);
             setCart(userCart);
             localStorage.setItem('cartItems', JSON.stringify([]));
           } catch(err) {
