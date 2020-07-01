@@ -1,9 +1,8 @@
-.shipping-address {
-    margin-bottom: 50px;
+.address-container {
     text-align: left;
 }
 
-.shipping-address h2 {
+.address-container h2 {
     font-size: 20px;
     margin: 0 0 30px 0;
 }

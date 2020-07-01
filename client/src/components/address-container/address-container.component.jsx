@@ -3,10 +3,10 @@ import FormInput from '../form-input/form-input.component';
 import './address-container.styles.css';
 
 import { connect } from 'react-redux';
-import { setAddress } from '../../redux/shipping/shipping.action';
-import { selectAddress } from '../../redux/shipping/shipping.selectors';
+import { setAddress } from '../../redux/order/order.action';
+import { selectAddress } from '../../redux/order/order.selectors';
 
-const AddressContainer = ({currentUser, address, setAddress}) => {
+const AddressContainer = ({ address, setAddress }) => {
     const { fullName, 
             addressLine1, 
             addressLine2, 
@@ -23,17 +23,17 @@ const AddressContainer = ({currentUser, address, setAddress}) => {
         });
     }
     return (
-        <div className='shipping-address'>
+        <div className='address-container'>
             <h2>Shipping Address</h2>
             <FormInput
-                label='Full Name'
+                label='Full Name &#42;'
                 type='text'
                 value={fullName} 
                 name='fullName' 
                 required 
                 handleChange={handleChange}/>
             <FormInput
-                label='Address Line 1'
+                label='Address Line 1 &#42;'
                 type='text'
                 value={addressLine1} 
                 name='addressLine1' 
@@ -46,21 +46,21 @@ const AddressContainer = ({currentUser, address, setAddress}) => {
                 name='addressLine2' 
                 handleChange={handleChange}/>
             <FormInput
-                label='City'
+                label='City &#42;'
                 type='text'
                 value={city} 
                 name='city' 
                 required 
                 handleChange={handleChange}/>
             <FormInput
-                label='Postal Code'
+                label='Postal Code &#42;'
                 type='text'
                 value={postalCode} 
                 name='postalCode' 
                 required 
                 handleChange={handleChange}/>
             <div className='address__province'>
-                <label>Province</label>
+                <label>Province &#42;</label>
                 <select name="province" value={province} onChange={handleChange}>
                     {
                         ['NL', 'PE', 'NS', 'NB', 'QC', 'ON', 'MB', 
@@ -71,7 +71,7 @@ const AddressContainer = ({currentUser, address, setAddress}) => {
             </div>
             <FormInput
                 type='text'
-                label='Country'
+                label='Country &#42;'
                 value={country} 
                 name='country' 
                 readOnly/>

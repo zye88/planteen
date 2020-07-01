@@ -1,4 +1,4 @@
-import ShippingActionTypes from './shipping.types';
+import OrderActionTypes from './order.types';
 import UserActionTypes from '../user/user.types.js';
 
 const INITIAL_STATE = {
@@ -10,16 +10,22 @@ const INITIAL_STATE = {
         postalCode: '',
         province: '',
         country: 'Canada'
-    }
+    },
+    paymentComplete: false
 }
 
-const shippingReducer = (state=INITIAL_STATE, action) => {
+const orderReducer = (state=INITIAL_STATE, action) => {
     switch(action.type) {
-        case ShippingActionTypes.SET_ADDRESS:
+        case OrderActionTypes.SET_ADDRESS:
             return {
                 ...state,
                 address: action.address
             };
+        case OrderActionTypes.SET_COMPLETE_PAYMENT:
+            return {
+                ...state,
+                paymentComplete: action.complete
+            }
         case UserActionTypes.SET_CURRENT_USER:
             return {
                 ...state,
@@ -33,4 +39,4 @@ const shippingReducer = (state=INITIAL_STATE, action) => {
     }
 }
 
-export default shippingReducer;
+export default orderReducer;

@@ -1,17 +1,22 @@
 import { createSelector } from 'reselect';
 
-const selectShipping = state => state.shipping;
+const selectOrder = state => state.order;
 
 export const selectAddress = createSelector(
-    [selectShipping],
-    shipping => shipping.address
+    [selectOrder],
+    order => order.address
 );
 
-export const selectRequiredProvided = createSelector(
+export const selectCompleteAddress = createSelector(
     [selectAddress],
     address => address.fullName !== '' && 
                 address.addressLine1 !== '' &&
                 address.city !== '' &&
                 address.postalCode!== '' &&
                 address.province!== ''
+);
+
+export const selectPaymentComplete = createSelector(
+    [selectOrder],
+    order => order.paymentComplete
 );

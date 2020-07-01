@@ -69,7 +69,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, cartItems } = this.props;
     return (
       <div className="App">
         <Header/>
@@ -83,9 +83,7 @@ class App extends Component {
             currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
           <Route path='/welcome' render={() =>
             currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
-          <Route path='/order-now'>
-            <OrderPage/>
-          </Route>
+          <Route path='/order-now' component={OrderPage}/>
         </Switch>
       </div>
     );

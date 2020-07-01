@@ -3,19 +3,6 @@
     flex-direction: column;
 }
 
-.to-category {
-    display: flex;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 13px;
-}
-
-.to-category img {
-    width: 15px;
-    height: auto;
-    margin-right: 3px;
-}
-
 .product-container {
     display: flex;
 }

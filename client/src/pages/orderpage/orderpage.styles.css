@@ -1,26 +1,26 @@
 .orderpage {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
-.orderpage h2 {
-    font-size: 20px;
-    margin: 0 0 30px 0;
+.orderpage .go-to {
+    margin: -5px 0 15px 0;
 }
 
-.summary-section {
-    border: 1px solid #6DCD82;
-    padding: 18px 35px;
-    height: fit-content;
-    margin-left: 80px;
+.input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-.orderpage .order-summary span {
-    margin: 5px 0;
-    text-align: right;
-    font-weight: 400;
+.orderpage .vert-divider {
+    width: 1px;
+    height: 250px;
+    margin: auto;
+    background-color: #acacac;
 }
 
-.orderpage .custom-btn {
-    width: 100%;
+.orderpage  .custom-btn {
+    width: 200px;
+    margin: 20px 0 30px auto;
 }

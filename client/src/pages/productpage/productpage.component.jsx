@@ -10,20 +10,19 @@ import { addCartItem } from '../../redux/cart/cart.action';
 // Component imports
 import CustomButton from '../../components/custom-button/custom-button.component';
 import CareContainer from '../../components/care-container/care-container.component';
+import GoToAction from '../../components/go-to-action/go-to-action.component';
 
 // Style-related imports
 import './productpage.styles.css';
-import backIcon from '../../img/chevron-back-outline.svg';
 
-const ProductPage = ({productDetails, match, addCartItem}) => {
-    const { id, name, price, image, description, care} = productDetails;
-    const formattedCategory = capFirstWord(match.params.category)
-    return (
+const ProductPage = ({
+    productDetails: { id, name, price, image, description, care}, 
+    match, 
+    addCartItem }) => (
     <div className='productpage'>
-        <Link className='to-category' to={`/shop/${match.params.category}`}>
-            <img src={backIcon} alt='Back Icon'/>
-            <span>Back to {formattedCategory}</span>
-        </Link>
+        <GoToAction 
+            linkUrl={`/shop/${match.params.category}`}
+            label={`Back to ${capFirstWord(match.params.category)}`}/>
         <div className='product-container'>
             <div className='product__col--1'>
                 <img src={require(`../../img/${image}`)} alt={name}/>
@@ -39,7 +38,7 @@ const ProductPage = ({productDetails, match, addCartItem}) => {
             </div>
         </div>
     </div>
-)};
+);
 
 const mapStatetoProps = (state, ownProps) => {
     const { category, id } = ownProps.match.params;
