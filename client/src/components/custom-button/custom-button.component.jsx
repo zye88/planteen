@@ -9,16 +9,20 @@ const CustomButton = ({
         white, 
         googleSignIn, 
         facebookSignIn, 
+        disabled,
         history}) => (
     <button 
         className={`custom-btn ${white? 'btn--white': 
             googleSignIn? 'btn-google':
-            facebookSignIn? 'btn-facebook':'btn--standard'}`}
+            facebookSignIn? 'btn-facebook':
+            disabled? 'btn--disabled':
+            'btn--standard'}`}
         onClick={() => {
             if(linkUrl) history.push(linkUrl);
             if(handleClick) handleClick();
-        }}>
-        <span>{label}</span>
+        }}
+        disabled={disabled}>
+        {label}
     </button>
 );
 

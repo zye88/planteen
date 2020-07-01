@@ -1,3 +1,13 @@
+.shipping-address {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.shipping-address h2 {
+    font-size: 20px;
+    margin: 0 0 30px 0;
+}
+
 .address__province {
     display: flex;
     margin: 25px 0;

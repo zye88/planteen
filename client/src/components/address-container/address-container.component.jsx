@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import './address-container.styles.css';
 
-const AddressContainer = () => {
-    const [address, setAddress] = useState({
-        fullName: '',
-        addressLine1: '',
-        addressLine2: '',
-        city: '',
-        postalCode: '',
-        province: ''
-    });
+import { connect } from 'react-redux';
+import { setAddress } from '../../redux/shipping/shipping.action';
+import { selectAddress } from '../../redux/shipping/shipping.selectors';
 
+const AddressContainer = ({currentUser, address, setAddress}) => {
     const { fullName, 
             addressLine1, 
             addressLine2, 
             city, 
             postalCode, 
-            province } = address;
+            province,
+            country } = address;
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -27,7 +23,8 @@ const AddressContainer = () => {
         });
     }
     return (
-        <div className='address-container'>
+        <div className='shipping-address'>
+            <h2>Shipping Address</h2>
             <FormInput
                 label='Full Name'
                 type='text'
@@ -64,7 +61,7 @@ const AddressContainer = () => {
                 handleChange={handleChange}/>
             <div className='address__province'>
                 <label>Province</label>
-                <select name="province">
+                <select name="province" value={province} onChange={handleChange}>
                     {
                         ['NL', 'PE', 'NS', 'NB', 'QC', 'ON', 'MB', 
                         'SK', 'AB', 'BC', 'YT', 'NT', 'NU'].map(prov => 
@@ -75,11 +72,19 @@ const AddressContainer = () => {
             <FormInput
                 type='text'
                 label='Country'
-                value='Canada Only' 
+                value={country} 
                 name='country' 
                 readOnly/>
         </div>
     );
 }
 
-export default AddressContainer;
+const mapStateToProps = state => ({
+    address: selectAddress(state)
+});
+
+const mapDispatchToState = dispatch => ({
+    setAddress: address => dispatch(setAddress(address))
+})
+
+export default connect(mapStateToProps, mapDispatchToState)(AddressContainer);

@@ -48,3 +48,7 @@
     border: 1px solid  #4267B2;
     color:  #4267B2
 }
+
+.btn--disabled {
+    background-color: rgb(182, 182, 182);
+}

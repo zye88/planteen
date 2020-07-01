@@ -8,31 +8,6 @@
     margin: 0 0 30px 0;
 }
 
-/* ---------------------------------- */
-/* Shipping and Payment Section       */
-/* ---------------------------------- */
-.orderpage .shipping-address,
-.payment-info {
-    margin-bottom: 50px;
-}
-
-.shipping-address input {
-    text-align: left;
-}
-
-.test-credit-card {
-    border: 1px solid red;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.payment-info {
-    width: 380px;
-}
-
-/* ---------------------------------- */
-/* Purchase Order Summary             */
-/* ---------------------------------- */
 .summary-section {
     border: 1px solid #6DCD82;
     padding: 18px 35px;

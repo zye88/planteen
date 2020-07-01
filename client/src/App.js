@@ -83,7 +83,9 @@ class App extends Component {
             currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
           <Route path='/welcome' render={() =>
             currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
-          <Route path='/order-now' component={OrderPage}/>
+          <Route path='/order-now'>
+            <OrderPage/>
+          </Route>
         </Switch>
       </div>
     );
