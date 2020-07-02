@@ -51,7 +51,7 @@ const OrderPage = ({
 
         try {
             const result = await stripe.createToken(card);
-            const response = await axios.post('/payments', {
+            const response = await axios.post('https://planteen.herokuapp.com/payments', {
                 token: result.token,
                 amount: stripePrice
             });
@@ -60,6 +60,7 @@ const OrderPage = ({
                 setPaymentError('');
                 const uid = currentUser? currentUser.uid: null;
                 const oid = await createOrderDoc(cartItems, address, contact, uid, response.data.success.id);
+
                 if(oid) {
                     setOrderId(oid);
                     toggleOrderSuccessHidden();
