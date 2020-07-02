@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { auth, db, updateCartDoc, getCartDoc } from './firebase/firebase.utils';
+import { auth, db, getCartDoc } from './firebase/firebase.utils';
 import './App.css';
 
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCartItems } from './redux/cart/cart.action';
-import { selectCartItems } from './redux/cart/cart.selectors';
 import { mergeCarts } from './redux/cart/cart.utils';
 
 import Header from './components/header/header.component';
@@ -20,26 +19,25 @@ import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import WelcomePage from './pages/welcomepage/welcomepage.component';
 import OrderPage from './pages/orderpage/orderpage.component';
 
-class App extends Component {
-  authUnsubscribe;
-  snapshotUnsubscribe;
+const App = ({ setCurrentUser, setCartItems, currentUser }) => {
+  let authUnsubscribe;
+  let snapshotUnsubscribe;
 
-  localCartInit() {
+  const localCartInit = () => {
     if(!localStorage.getItem('cartItems')) 
       localStorage.setItem('cartItems', JSON.stringify([]));
   }
 
-  componentDidMount() {
-    const { setCurrentUser, setCartItems } = this.props;
-    this.localCartInit();
+  useEffect(() => {
+    localCartInit();
 
-    this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
+    authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
       if(userAuth) {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
 
-            this.snapshotUnsubscribe = userRef.onSnapshot(snapshot => {
+            snapshotUnsubscribe = userRef.onSnapshot(snapshot => {
               if(!snapshot.exists) return;
 
               const { email, displayName } = snapshot.data();
@@ -59,38 +57,34 @@ class App extends Component {
         setCartItems(JSON.parse(localCart));
       }
     });
-  };
 
-  componentWillUnmount() {
-    this.authUnsubscribe();
-    if(this.snapshotUnsubscribe) this.snapshotUnsubscribe();
-  }
+    return () => {
+      authUnsubscribe();
+      if(snapshotUnsubscribe) snapshotUnsubscribe();
+    }
+  }, []);
 
-  render() {
-    const { currentUser, cartItems } = this.props;
-    return (
-      <div className="App">
-        <Header/>
-        <Switch>
-          <Route exact path='/' component={HomePage}/>
-          <Route path='/shop/:category/:id' component={ProductPage}/>
-          <Route path='/shop/:category' component={ShopPage}/>
-          <Route path='/checkout' component={CheckoutPage}/>
-          <Route path='/contact' component={ContactPage}/>
-          <Route path='/sign-in-up' render={() => 
-            currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
-          <Route path='/welcome' render={() =>
-            currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
-          <Route path='/order-now' component={OrderPage}/>
-        </Switch>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Header/>
+      <Switch>
+        <Route exact path='/' component={HomePage}/>
+        <Route path='/shop/:category/:id' component={ProductPage}/>
+        <Route path='/shop/:category' component={ShopPage}/>
+        <Route path='/checkout' component={CheckoutPage}/>
+        <Route path='/contact' component={ContactPage}/>
+        <Route path='/sign-in-up' render={() => 
+          currentUser? <Redirect to='/welcome'/>:<SignInUpPage/>}/>
+        <Route path='/welcome' render={() =>
+          currentUser? <WelcomePage/>:<Redirect to='/sign-in-up'/>}/>
+        <Route path='/order-now' component={OrderPage}/>
+      </Switch>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
   currentUser: selectCurrentUser(state),
-  cartItems: selectCartItems(state)
 });
 
 const mapDispatchToProps = dispatch => ({

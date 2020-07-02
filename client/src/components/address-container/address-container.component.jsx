@@ -61,10 +61,12 @@ const AddressContainer = ({ address, setAddress }) => {
             handleChange={handleChange}/>
             <div className='address__province'>
                 <label>Province &#42;</label>
-                <select name="province" value={province} onChange={handleChange}>
-                    <option key='ON' value='ON' selected>ON</option>
+                <select 
+                    name="province" 
+                    defaultValue ={province} 
+                    onChange={handleChange}>
                     {
-                        ['NL', 'PE', 'NS', 'NB', 'QC', 'MB', 
+                        ['NL', 'PE', 'NS', 'NB', 'ON', 'QC', 'MB', 
                         'SK', 'AB', 'BC', 'YT', 'NT', 'NU'].map(prov => 
                             <option key={prov} value={prov}>{prov}</option>)
                     }

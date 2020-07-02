@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { capFirstWord } from '../../components/component.utils.js';
 
 // Redux-related imports

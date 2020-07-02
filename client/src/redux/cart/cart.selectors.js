@@ -19,6 +19,6 @@ export const selectCartTotals = createSelector(
         const total = toTwoDecimals(cartItems.reduce((acc, item) => 
             acc + item.price * item.quantity, 0));
         const tax = toTwoDecimals(total * .13);
-        return [total, tax, total + tax];
+        return [total, tax, toTwoDecimals(total + tax)];
     }
 )

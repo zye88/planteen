@@ -2,7 +2,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import SignInUpEmail from '../components/sign-in-up-email/sign-in-up-email.component';
 
 const config = {
   apiKey: "AIzaSyBWKYHBH1TWhmCKh9vU-X6bloD8yFKg_OI",
@@ -31,20 +30,19 @@ const providers = {
 };
 
 const createUserDoc = async (uid, email, displayName) => {
-  const userRef = await db.doc(`users/${uid}`);
-  const snapShot = await userRef.get();
+  const userRef = db.doc(`users/${uid}`);
   
-  if(!snapShot.exists) {
-    try {
+  try {
+    const snapShot = await userRef.get();
+    if(!snapShot.exists) {
       await userRef.set({
-        uid,
         email,
         displayName,
         createdAt: new Date()
       });
-    } catch(err) {
-      console.log('Error in firebase profile creation:', err);
     }
+  } catch(err) {
+    console.log('Error in firebase profile creation:', err);
   }
 }
 
@@ -60,7 +58,7 @@ export const signUpWithEmail = async (inputEmail, inputPassword, displayName) =>
 
 export const signInWithEmail = async (email, password) => {
   try {
-    auth.signInWithEmailAndPassword(email, password);
+    await auth.signInWithEmailAndPassword(email, password);
   } catch(err) {
     console.log('Failed to sign in with email:', err);
   }
@@ -68,7 +66,7 @@ export const signInWithEmail = async (email, password) => {
 
 export const signInWithPlatform = async platform => {
   try {
-    const {user: {uid, email, displayName}} = await auth.signInWithPopup(providers[platform]);
+    const {user: { uid, email, displayName }} = await auth.signInWithPopup(providers[platform]);
     createUserDoc(uid, email, displayName);
   } catch(err) {
     console.log(`Failed to sign in with ${platform}:`, err);
@@ -85,7 +83,7 @@ export const getCartDoc = async uid => {
 }
 
 export const updateCartDoc  = async (uid, cartItems) => {
-  const cartRef = await db.doc(`carts/${uid}`);
+  const cartRef = db.doc(`carts/${uid}`);
   try {
     await cartRef.set({cartItems});
   } catch(err) {
@@ -95,9 +93,9 @@ export const updateCartDoc  = async (uid, cartItems) => {
 
 export const signOutUser = async () => {
   try {
-      await auth.signOut();
+    await auth.signOut();
   } catch(err) {
-      console.log('Failed to sign out:', err);
+    console.log('Failed to sign out:', err);
   }
 }
 
@@ -105,7 +103,7 @@ export const createOrderDoc =
   async (orderItems, shippingAddress, contactInfo,  userId, paymentId) => {
   try {
     const orderRef = await db.collection('orders').add({
-      createdAt: Date.now(),
+      createdAt: new Date(),
       contactInfo,
       orderItems,
       status: 'Ordered',

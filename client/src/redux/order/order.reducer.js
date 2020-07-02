@@ -8,7 +8,7 @@ const INITIAL_STATE = {
         addressLine2: '',
         city: '',
         postalCode: '',
-        province: '',
+        province: 'ON',
         country: 'Canada'
     },
     contact: {

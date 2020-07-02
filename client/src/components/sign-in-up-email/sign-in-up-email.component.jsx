@@ -56,9 +56,8 @@ const SignInUpEmail = ({ signup, toggleSignup }) => {
         });
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-
         validateInput();
         if(confirmError) return;
 
@@ -66,8 +65,7 @@ const SignInUpEmail = ({ signup, toggleSignup }) => {
             signUpWithEmail(email, password, displayName)
         } else {
             signInWithEmail(email, password);
-        };
-
+        }
         clearAllInput();
     }
 

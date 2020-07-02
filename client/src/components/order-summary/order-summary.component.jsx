@@ -5,9 +5,9 @@ import './order-summary.styles.css';
 
 const OrderSummary = ({ cartTotals: [total, tax, totalWithTax] }) => (
     <div className='order-summary'>
-        <span>Total (excl. tax): ${total.toFixed(2)}</span>
-        <span>Tax: ${tax.toFixed(2)}</span>
-        <span>Total (incl. tax): ${totalWithTax.toFixed(2)}</span>
+        <span>Total (excl. tax): ${total}</span>
+        <span>Tax: ${tax}</span>
+        <span>Total (incl. tax): ${totalWithTax}</span>
     </div>
 );
 
