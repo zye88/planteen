@@ -1,11 +1,11 @@
 import CartActionTypes from './cart.types';
 import UserActionTypes from '../user/user.types';
-import { addItem, removeItem, clearItem } from './cart.utils';
+import { addItem, removeItem, clearItem, updateCartStorage } from './cart.utils';
 
 const INITIAL_STATE = {
     cartHidden: true,
     cartItems: [],
-    userUid: null
+    userId: null
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -14,7 +14,8 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return { 
                 ...state, 
                 cartHidden: !state.cartHidden};
-        case CartActionTypes.SET_CART:
+        case CartActionTypes.SET_CART_ITEMS:
+            updateCartStorage(state.userId, action.cartItems);
             return {
                 ...state,
                 cartItems: action.cartItems
@@ -22,23 +23,23 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         case CartActionTypes.ADD_CART_ITEM:
             return {
                 ...state,
-                cartItems: addItem(action.item, state.cartItems, state.userUid)
+                cartItems: addItem(action.item, state.cartItems, state.userId)
             }
         case CartActionTypes.REMOVE_CART_ITEM:
             return {
                 ...state,
-                cartItems: removeItem(action.id, state.cartItems, state.userUid)
+                cartItems: removeItem(action.id, state.cartItems, state.userId)
             }
         case CartActionTypes.CLEAR_CART_ITEM:
             return {
                 ...state,
-                cartItems: clearItem(action.id, state.cartItems, state.userUid)
+                cartItems: clearItem(action.id, state.cartItems, state.userId)
             }
         case UserActionTypes.SET_CURRENT_USER:
             return {
                 ...state,
                 cartItems: action.user? state.cartItems: [],
-                userUid: action.user? action.user.uid: null
+                userId: action.user? action.user.uid: null
             }
         default:
             return state;

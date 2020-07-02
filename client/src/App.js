@@ -6,7 +6,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
-import { setCart } from './redux/cart/cart.action';
+import { setCartItems } from './redux/cart/cart.action';
 import { selectCartItems } from './redux/cart/cart.selectors';
 import { mergeCarts } from './redux/cart/cart.utils';
 
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { setCurrentUser, setCart } = this.props;
+    const { setCurrentUser, setCartItems } = this.props;
     this.localCartInit();
 
     this.authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
@@ -49,15 +49,14 @@ class App extends Component {
             const cartDoc = await getCartDoc(userAuth.uid);
             const userCart = mergeCarts(JSON.parse(localCart), cartDoc);
 
-            updateCartDoc(userAuth.uid, userCart);
-            setCart(userCart);
+            setCartItems(userCart);
             localStorage.setItem('cartItems', JSON.stringify([]));
           } catch(err) {
             console.log('Error in retrieving user profile data from firebase:', err);
           }
       } else {
         setCurrentUser(null);
-        setCart(JSON.parse(localCart));
+        setCartItems(JSON.parse(localCart));
       }
     });
   };
@@ -96,7 +95,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  setCart: cartItems => dispatch(setCart(cartItems))
+  setCartItems: cartItems => dispatch(setCartItems(cartItems))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

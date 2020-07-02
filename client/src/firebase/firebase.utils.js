@@ -101,7 +101,8 @@ export const signOutUser = async () => {
   }
 }
 
-export const createOrderDoc = async (orderItems, shippingAddress, contactInfo,  uid) => {
+export const createOrderDoc = 
+  async (orderItems, shippingAddress, contactInfo,  userId, paymentId) => {
   try {
     const orderRef = await db.collection('orders').add({
       createdAt: Date.now(),
@@ -109,7 +110,8 @@ export const createOrderDoc = async (orderItems, shippingAddress, contactInfo,  
       orderItems,
       status: 'Ordered',
       shippingAddress,
-      uid
+      userId,
+      paymentId
     });
     return orderRef.id;
   } catch(err) {

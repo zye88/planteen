@@ -15,7 +15,7 @@ import {
     selectOrderSuccessHidden } from '../../redux/order/order.selectors';
 import { toggleOrderSuccessHidden, clearUserInput } from '../../redux/order/order.action';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { setCart } from '../../redux/cart/cart.action';
+import { setCartItems } from '../../redux/cart/cart.action';
 
 import AddressContainer from '../../components/address-container/address-container.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
@@ -36,7 +36,8 @@ const OrderPage = ({
     contactComplete,
     orderSuccessHidden,
     toggleOrderSuccessHidden,
-    clearUserInput }) => {
+    clearUserInput,
+    setCartItems }) => {
     
     const stripe = useStripe();
     const elements = useElements();
@@ -50,7 +51,7 @@ const OrderPage = ({
 
         try {
             const result = await stripe.createToken(card);
-            const response = await axios.post('http://localhost:5000/payments', {
+            const response = await axios.post('/payments', {
                 token: result.token,
                 amount: stripePrice
             });
@@ -58,11 +59,12 @@ const OrderPage = ({
             if(response.status === 200) {
                 setPaymentError('');
                 const uid = currentUser? currentUser.uid: null;
-                const oid = await createOrderDoc(cartItems, address, contact, uid);
+                const oid = await createOrderDoc(cartItems, address, contact, uid, response.data.success.id);
                 if(oid) {
                     setOrderId(oid);
                     toggleOrderSuccessHidden();
                     clearUserInput();
+                    setCartItems([]);
                     card.clear();
                 }
             }
@@ -110,7 +112,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     toggleOrderSuccessHidden: () => dispatch(toggleOrderSuccessHidden()),
-    clearUserInput: () => dispatch(clearUserInput())
+    clearUserInput: () => dispatch(clearUserInput()),
+    setCartItems: items => dispatch(setCartItems(items))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderPage);

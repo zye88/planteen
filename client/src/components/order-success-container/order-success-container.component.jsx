@@ -12,10 +12,10 @@ const OrderSuccess = ({ orderId, toggleOrderSuccesHidden, currentUser }) => (
             <h2>Your order has been processed!</h2>
             <span>Your order {orderId} will be shipped to you within 5-10 business days.</span>
             <div className='btn-container'>
-                {currentUser? <CustomButton
+                {/* {currentUser? <CustomButton
                     label='View Order'
                     linkUrl=''
-                    handleClick={toggleOrderSuccesHidden}/>:''}
+                    handleClick={toggleOrderSuccesHidden}/>:''} */}
                 <CustomButton
                     label='Go Back To Home'
                     linkUrl='/'

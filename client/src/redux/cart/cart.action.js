@@ -19,7 +19,7 @@ export const clearCartItem = id => ({
     id
 });
 
-export const setCart = cartItems => ({
-    type: CartActionTypes.SET_CART,
+export const setCartItems = cartItems => ({
+    type: CartActionTypes.SET_CART_ITEMS,
     cartItems
 })

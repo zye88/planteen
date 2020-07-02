@@ -3,7 +3,7 @@ import { updateCartDoc } from '../../firebase/firebase.utils';
 const updateItem = (id, newQty, arr) => 
     arr.map(item => item.id === id? {...item, quantity: newQty }: item );
 
-const updateCartStorage = (uid, cart) => {
+export const updateCartStorage = (uid, cart) => {
     uid? updateCartDoc(uid, cart): 
         localStorage.setItem('cartItems', JSON.stringify(cart));
 }
