@@ -1,0 +1,38 @@
+.order-success-container {
+    background-color: #6c6a6a20;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.success-modal {
+    border: 1px solid #424242;
+    width: 350px;
+    height: fit-content;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    align-self: center;
+    padding: 10px 30px 25px 30px;
+    text-align: center;
+
+}
+
+.success-modal h2 {
+    font-size: 20px;
+}
+
+.success-modal .btn-container {
+    display: flex;
+    margin-top: 30px;
+}
+
+.success-modal .custom-btn {
+    width: 170px;
+    margin-left: auto;
+}

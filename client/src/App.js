@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { auth, db, updateCartDoc } from './firebase/firebase.utils';
+import { auth, db, updateCartDoc, getCartDoc } from './firebase/firebase.utils';
 import './App.css';
 
 import { connect } from 'react-redux';
@@ -46,9 +46,8 @@ class App extends Component {
               setCurrentUser({ uid: snapshot.id, email, displayName});
             });
 
-            const cartRef = await db.doc(`carts/${userAuth.uid}`).get();
-            let userCart = cartRef.exists? JSON.parse(cartRef.data().cartItems): [];
-            userCart = mergeCarts(JSON.parse(localCart), userCart);
+            const cartDoc = await getCartDoc(userAuth.uid);
+            const userCart = mergeCarts(JSON.parse(localCart), cartDoc);
 
             updateCartDoc(userAuth.uid, userCart);
             setCart(userCart);

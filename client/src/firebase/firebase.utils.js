@@ -2,6 +2,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import SignInUpEmail from '../components/sign-in-up-email/sign-in-up-email.component';
 
 const config = {
   apiKey: "AIzaSyBWKYHBH1TWhmCKh9vU-X6bloD8yFKg_OI",
@@ -24,10 +25,28 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 facebookProvider.setCustomParameters({'display': 'popup'});
 facebookProvider.addScope('email');
 
-export const providers = {
+const providers = {
   google: googleProvider,
   facebook: facebookProvider
 };
+
+const createUserDoc = async (uid, email, displayName) => {
+  const userRef = await db.doc(`users/${uid}`);
+  const snapShot = await userRef.get();
+  
+  if(!snapShot.exists) {
+    try {
+      await userRef.set({
+        uid,
+        email,
+        displayName,
+        createdAt: new Date()
+      });
+    } catch(err) {
+      console.log('Error in firebase profile creation:', err);
+    }
+  }
+}
 
 export const signUpWithEmail = async (inputEmail, inputPassword, displayName) => {
   try {
@@ -56,10 +75,19 @@ export const signInWithPlatform = async platform => {
   }
 }
 
-export const updateCartDoc  = async (uid, cart) => {
+export const getCartDoc = async uid => {
+  try {
+    const cartRef = await db.doc(`carts/${uid}`).get();
+    return cartRef.exists? cartRef.data().cartItems: [];
+  } catch(err) {
+    console.log('Error in retrieving cart from storage:', err);
+  }
+}
+
+export const updateCartDoc  = async (uid, cartItems) => {
   const cartRef = await db.doc(`carts/${uid}`);
   try {
-    await cartRef.set({cartItems: JSON.stringify(cart)});
+    await cartRef.set({cartItems});
   } catch(err) {
     console.log('Error in updating cart in storage:', err);
   }
@@ -73,20 +101,19 @@ export const signOutUser = async () => {
   }
 }
 
-const createUserDoc = async (uid, email, displayName) => {
-  const userRef = await db.doc(`users/${uid}`);
-  const snapShot = await userRef.get();
-  
-  if(!snapShot.exists) {
-    try {
-      await userRef.set({
-        uid,
-        email,
-        displayName,
-        createdAt: new Date()
-      });
-    } catch(err) {
-      console.log('Error in firebase profile creation:', err);
-    }
+export const createOrderDoc = async (orderItems, shippingAddress, contactInfo,  uid) => {
+  try {
+    const orderRef = await db.collection('orders').add({
+      createdAt: Date.now(),
+      contactInfo,
+      orderItems,
+      status: 'Ordered',
+      shippingAddress,
+      uid
+    });
+    return orderRef.id;
+  } catch(err) {
+    console.log('Failed to store order:', err);
+    return null;
   }
 }

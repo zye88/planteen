@@ -3,24 +3,37 @@
     flex-direction: column;
 }
 
+.orderpage .error-msg {
+    border: 1px solid red;
+    color: red;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 .orderpage .go-to {
     margin: -5px 0 15px 0;
 }
 
-.input-section {
+.orderpage__info {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+}
+
+.orderpage .user-contact
+
+.left-section,
+.right-section {
+    display: flex;
+    flex-direction: column;
 }
 
 .orderpage .vert-divider {
     width: 1px;
-    height: 250px;
+    height: 400px;
     margin: auto;
     background-color: #acacac;
 }
 
-.orderpage  .custom-btn {
+.right-section .custom-btn {
     width: 200px;
-    margin: 20px 0 30px auto;
+    margin: 0 0 30px auto;
 }

@@ -1,5 +1,6 @@
 .cart-dropdown {
     position: absolute;
+    z-index: 1;
     top: 60px;
     right: 18%;
     border: solid grey 1px;

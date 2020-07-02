@@ -53,12 +53,12 @@ const AddressContainer = ({ address, setAddress }) => {
                 required 
                 handleChange={handleChange}/>
             <FormInput
-                label='Postal Code &#42;'
-                type='text'
-                value={postalCode} 
-                name='postalCode' 
-                required 
-                handleChange={handleChange}/>
+            label='Postal Code &#42;'
+            type='text'
+            value={postalCode} 
+            name='postalCode' 
+            required 
+            handleChange={handleChange}/>
             <div className='address__province'>
                 <label>Province &#42;</label>
                 <select name="province" value={province} onChange={handleChange}>
