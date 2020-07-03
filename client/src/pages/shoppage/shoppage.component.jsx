@@ -11,7 +11,7 @@ const ShopPage = ({category}) => {
     const { title, items} = category;
     return (
     <div className='shoppage'>
-        <h2>{title}</h2>
+        <h2>{title.toUpperCase()}</h2>
         <div className='shoppage__items'>
             {
                 items.map(item => <ShopItem 

@@ -117,3 +117,69 @@ export const createOrderDoc =
     return null;
   }
 }
+
+export const addCategoryAndItems = (catalogue) => {
+  /** Expected input format: 
+  catalogue = [
+    {
+        category: ,
+        items: 
+        [
+            {
+                name: ,
+                price: ,
+                image: ,
+                description: ,
+                care: [] (optional)
+            },
+            { ... }
+        ]
+    }
+  ]; **/
+  const catalogueRef = db.collection('catalogue');
+  catalogue.forEach(async ({category, items}) => {
+    try {
+      const categoryList=  await catalogueRef.where('category', '==', category).get();
+      let itemsRef;
+
+      if(!categoryList.empty) {
+        const categoryId = categoryList.docs[0].id;
+        itemsRef = db.collection(`catalogue/${categoryId}/items`);
+      } else {
+        const categoryRef = await catalogueRef.add({ category });
+        itemsRef = db.collection(`catalogue/${categoryRef.id}/items`);
+      }
+
+      items.forEach(item => itemsRef.add(item));
+
+    } catch(err) {
+      console.log('Error in writing more shop items to db:', err);
+    }
+    
+  });
+}
+
+export const addPageData = (pages) => {
+  /** Expected input format: 
+  pages = [
+    {
+      page: 'home',
+      data: ...
+    }
+  ]**/
+  try {
+    const pagesRef = db.collection('pages');
+    pages.forEach(async ({ page, data }) => {
+      const pageList = await pagesRef.where('page', '==', page).get();
+      if(!pageList.empty) {
+        const pageId = pageList.docs[0].id;
+        const dataRef = db.doc(`pages/${pageId}`);
+        dataRef.update({ data });
+      } else {
+        pagesRef.add({ page, data });
+      }
+    });
+  } catch(err) {
+    console.log('Failed to add page data:', err);
+  }
+}

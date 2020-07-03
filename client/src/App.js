@@ -8,6 +8,7 @@ import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCartItems } from './redux/cart/cart.action';
 import { mergeCarts } from './redux/cart/cart.utils';
+import { setPageData } from './redux/page/page.actions';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -19,17 +20,16 @@ import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import WelcomePage from './pages/welcomepage/welcomepage.component';
 import OrderPage from './pages/orderpage/orderpage.component';
 
-const App = ({ setCurrentUser, setCartItems, currentUser }) => {
-  let authUnsubscribe;
-  let snapshotUnsubscribe;
+const App = ({ setCurrentUser, setCartItems, currentUser, setPageData }) => {
 
-  const localCartInit = () => {
+  const initLocalCart = () => {
     if(!localStorage.getItem('cartItems')) 
       localStorage.setItem('cartItems', JSON.stringify([]));
   }
 
   useEffect(() => {
-    localCartInit();
+    initLocalCart();
+    let authUnsubscribe, userUnsubscribe;
 
     authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
@@ -37,7 +37,7 @@ const App = ({ setCurrentUser, setCartItems, currentUser }) => {
           try {
             const userRef = db.doc(`users/${userAuth.uid}`);
 
-            snapshotUnsubscribe = userRef.onSnapshot(snapshot => {
+            userUnsubscribe = userRef.onSnapshot(snapshot => {
               if(!snapshot.exists) return;
 
               const { email, displayName } = snapshot.data();
@@ -60,7 +60,7 @@ const App = ({ setCurrentUser, setCartItems, currentUser }) => {
 
     return () => {
       authUnsubscribe();
-      if(snapshotUnsubscribe) snapshotUnsubscribe();
+      if(userUnsubscribe) userUnsubscribe();
     }
   }, []);
 
@@ -89,7 +89,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
-  setCartItems: cartItems => dispatch(setCartItems(cartItems))
+  setCartItems: cartItems => dispatch(setCartItems(cartItems)),
+  setPageData: (page, data) => dispatch(setPageData(page, data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
