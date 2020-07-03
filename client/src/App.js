@@ -9,6 +9,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCartItems } from './redux/cart/cart.action';
 import { mergeCarts } from './redux/cart/cart.utils';
 import { setPageData } from './redux/page/page.actions';
+import { updateCategoryData } from './redux/shop/shop.actions';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -20,16 +21,43 @@ import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import WelcomePage from './pages/welcomepage/welcomepage.component';
 import OrderPage from './pages/orderpage/orderpage.component';
 
-const App = ({ setCurrentUser, setCartItems, currentUser, setPageData }) => {
+const App = ({ 
+  setCurrentUser, 
+  setCartItems, 
+  currentUser, 
+  setPageData, 
+  updateCategoryData }) => {
 
   const initLocalCart = () => {
     if(!localStorage.getItem('cartItems')) 
       localStorage.setItem('cartItems', JSON.stringify([]));
   }
 
+  const initHomeData = async () => {
+    try {
+      const pageRef = await db.doc('pages/home').get();
+      setPageData(pageRef.id, pageRef.data());
+    } catch(err) {
+      console.log('Failed to retrieve page data from storage:', err);
+    }
+  }
+
+  const initShopData = async () => {
+    try {
+      const catalogue = await db.collection('catalogue').get();
+      catalogue.docs.forEach(categoryRef => {
+        updateCategoryData(categoryRef.id, categoryRef.data())
+      });
+    } catch(err) {
+      console.log('Failed to retrieve shop data from storage:', err);
+    }
+  }
+
   useEffect(() => {
-    initLocalCart();
     let authUnsubscribe, userUnsubscribe;
+    initLocalCart();
+    initShopData();
+    initHomeData();
 
     authUnsubscribe = auth.onAuthStateChanged(async userAuth => {
       const localCart = localStorage.getItem('cartItems');
@@ -59,8 +87,8 @@ const App = ({ setCurrentUser, setCartItems, currentUser, setPageData }) => {
     });
 
     return () => {
-      authUnsubscribe();
       if(userUnsubscribe) userUnsubscribe();
+      authUnsubscribe();
     }
   }, []);
 
@@ -90,7 +118,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
   setCartItems: cartItems => dispatch(setCartItems(cartItems)),
-  setPageData: (page, data) => dispatch(setPageData(page, data))
+  setPageData: (page, data) => dispatch(setPageData(page, data)),
+  updateCategoryData: (key, value) => dispatch(updateCategoryData(key, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

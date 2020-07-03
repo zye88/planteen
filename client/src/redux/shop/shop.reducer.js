@@ -1,7 +1,12 @@
-import SHOP_DATA from './shop.data';
+import ShopActionTypes from './shop.types';
 
-const shopReducer = (state = SHOP_DATA, action) => {
+const shopReducer = (state = {}, action) => {
     switch(action.type) {
+        case ShopActionTypes.UPDATE_CATEGORY:
+            return {
+                ...state,
+                [action.key]: action.value
+            };
         default:
             return state;
     }

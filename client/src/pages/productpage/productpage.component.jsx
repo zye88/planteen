@@ -14,30 +14,33 @@ import GoToAction from '../../components/go-to-action/go-to-action.component';
 // Style-related imports
 import './productpage.styles.css';
 
-const ProductPage = ({
-    productDetails: { id, name, price, image, description, care}, 
-    match, 
-    addCartItem }) => (
-    <div className='productpage'>
-        <GoToAction 
-            linkUrl={`/shop/${match.params.category}`}
-            label={`Back to ${capFirstWord(match.params.category)}`}/>
-        <div className='product-container'>
-            <div className='product__col--1'>
-                <img src={require(`../../img/${image}`)} alt={name}/>
+const ProductPage = ({ productDetails, match, addCartItem }) => {
+    if(productDetails) {
+        const { id, name, price, image, description, care} = productDetails;
+        return (
+            <div className='productpage'>
+                <GoToAction 
+                    linkUrl={`/shop/${match.params.category}`}
+                    label={`Back to ${capFirstWord(match.params.category)}`}/>
+                <div className='product-container'>
+                    <div className='product__col--1'>
+                        <img src={require(`../../img/${image}`)} alt={name}/>
+                    </div>
+                    <div className='product__col--2'>
+                        <h2>{name}</h2>
+                        <p>{description}</p>
+                        {care? <CareContainer id={id} care={care}/> : ''}
+                        <CustomButton
+                            label={`Add To Cart - $${price}`}
+                            handleClick={() => 
+                                addCartItem({ id, name, price, image })}/>
+                    </div>
+                </div>
             </div>
-            <div className='product__col--2'>
-                <h2>{name}</h2>
-                <p>{description}</p>
-                {care? <CareContainer id={id} care={care}/> : ''}
-                <CustomButton
-                    label={`Add To Cart - $${price}`}
-                    handleClick={() => 
-                        addCartItem({ id, name, price, image })}/>
-            </div>
-        </div>
-    </div>
-);
+        );
+    }
+    return <div className='productpage'/>
+};
 
 const mapStatetoProps = (state, ownProps) => {
     const { category, id } = ownProps.match.params;

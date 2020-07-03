@@ -118,11 +118,11 @@ export const createOrderDoc =
   }
 }
 
-export const addCategoryAndItems = (catalogue) => {
+export const addCategoryAndItems = async (catalogue) => {
   /** Expected input format: 
-  catalogue = [
-    {
-        category: ,
+  catalogue = {
+      category: {
+        title: ,
         items: 
         [
             {
@@ -135,51 +135,33 @@ export const addCategoryAndItems = (catalogue) => {
             { ... }
         ]
     }
-  ]; **/
+  } 
+  **/
   const catalogueRef = db.collection('catalogue');
-  catalogue.forEach(async ({category, items}) => {
-    try {
-      const categoryList=  await catalogueRef.where('category', '==', category).get();
-      let itemsRef;
-
-      if(!categoryList.empty) {
-        const categoryId = categoryList.docs[0].id;
-        itemsRef = db.collection(`catalogue/${categoryId}/items`);
-      } else {
-        const categoryRef = await catalogueRef.add({ category });
-        itemsRef = db.collection(`catalogue/${categoryRef.id}/items`);
-      }
-
-      items.forEach(item => itemsRef.add(item));
-
-    } catch(err) {
-      console.log('Error in writing more shop items to db:', err);
+  try {
+    for(const [key, value] of Object.entries(catalogue)) {
+      await catalogueRef.doc(key).set(value);
     }
-    
-  });
+  } catch(err) {
+    console.log('Error in writing shop items to db:', err);
+  }
 }
 
-export const addPageData = (pages) => {
+export const addPageData = async (pages) => {
   /** Expected input format: 
-  pages = [
-    {
-      page: 'home',
-      data: ...
+  pages = {
+    pageKey: {
+      title: ,
+      data:
     }
-  ]**/
+  }
+  **/
+  const pagesRef = db.collection('pages');
   try {
-    const pagesRef = db.collection('pages');
-    pages.forEach(async ({ page, data }) => {
-      const pageList = await pagesRef.where('page', '==', page).get();
-      if(!pageList.empty) {
-        const pageId = pageList.docs[0].id;
-        const dataRef = db.doc(`pages/${pageId}`);
-        dataRef.update({ data });
-      } else {
-        pagesRef.add({ page, data });
-      }
-    });
+    for(const [key, value] of Object.entries(pages)) {
+      await pagesRef.doc(key).set(value);
+    }
   } catch(err) {
-    console.log('Failed to add page data:', err);
+    console.log('Error in writing page data to db:', err);
   }
 }

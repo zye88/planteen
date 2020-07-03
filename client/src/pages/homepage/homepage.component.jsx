@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './homepage.styles.css';
 import Section from '../../components/section/section.component';
-import { db } from '../../firebase/firebase.utils';
+import { selectPageData } from '../../redux/page/page.selectors';
+import { connect } from 'react-redux';
 
-const HomePage = () => { 
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        let pageUnsubscribe;
-        try {
-            const pageRef = db.doc('pages/znNjpMNznVI6cO9D96Ix');
-            pageUnsubscribe = pageRef.onSnapshot(snapshot => {
-              if(!snapshot.exists) return;
-              const { data } = snapshot.data();
-              setData(data);
-            });
-          } catch(err) {
-            console.log('Failed to retrieve page data from storage:', err);
-          }
-
-          return () => pageUnsubscribe();
-        }, []);
-
-    if (data) {
+const HomePage = ({ selectPageData }) => { 
+    if (selectPageData('home')) {
+        const { plants, gift, accessories } = selectPageData('home');
         return (
             <div className='homepage'>
-                <Section { ...data.plants}/>
-                <Section { ...data.gift}/>
-                <Section { ...data.accessories}/> 
+                <Section { ...plants}/>
+                <Section { ...gift}/>
+                <Section { ...accessories}/> 
             </div>
         );
     } else {
@@ -35,4 +19,8 @@ const HomePage = () => {
     }
 }
 
-export default HomePage;
+const mapStateToProps = state => ({
+    selectPageData: pageName => selectPageData(pageName)(state)
+});
+
+export default connect(mapStateToProps)(HomePage);
