@@ -11,6 +11,6 @@ export const selectProductDetails = (category, id) =>  createSelector(
     [selectShop],
     shop => shop[category]? shop[category]
                                 .items
-                                .find(product => product.id === parseInt(id))
+                                .find(product => product.id === id)
                             : null
 );

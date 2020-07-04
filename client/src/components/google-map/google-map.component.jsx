@@ -2,11 +2,9 @@ import React, { createRef, useEffect } from 'react';
 
 const GoogleMap = () => {
   const googleMapRef = createRef();
-  
-  useEffect(() => {
-    let googleMap;
+  let googleMap;
 
-    const createGoogleMap = () => 
+  const createGoogleMap = () => 
     new window.google.maps.Map(googleMapRef.current, {
         zoom: 17,
         center: { lat: 43.641862, lng: -79.401674 },
@@ -17,6 +15,8 @@ const GoogleMap = () => {
           position: { lat: 43.641862, lng: -79.401674 },
           map: googleMap
       });
+  
+  useEffect(() => {
 
     const googleScript = document.createElement('script');
     googleScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDUi157ogKkqgAim3Tkt0wU3lWttlrjet0&libraries=places`
