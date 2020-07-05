@@ -6,7 +6,7 @@ const Section = ({title, info, image, addClass, btn}) => (
     <section className={`section ${addClass}`}>
         <img 
             className='section__img' 
-            src={require(`../../img/${image}`)} alt={title}/>
+            src={`/img/${image}`} alt={title}/>
         <div className='section__info'>
             <h2>{title}</h2>
             <p>{info}</p>

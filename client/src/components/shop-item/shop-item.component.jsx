@@ -8,7 +8,7 @@ const ShopItem = ({id, name, price, image, match}) => (
     <div className='shop-item'>
         <img 
             className='item__img'
-            src={require(`../../img/${image}`)} 
+            src={`/img/${image}`} 
             alt={name}/>
         <CustomButton
             label='view details' 

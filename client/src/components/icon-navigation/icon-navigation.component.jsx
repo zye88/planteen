@@ -6,20 +6,18 @@ import { connect } from 'react-redux';
 import { toggleCartHidden } from '../../redux/cart/cart.action';
 
 import './icon-navigation.styles.css';
-import profileIcon from '../../img/profile.svg';
-import cartIcon from '../../img/cart.svg';
 
 const IconNavigation = ({toggleCartHidden, location}) => (
     <div className='icon-navigation'>
         <Link to='/sign-in-up'>
             <img 
-                src={profileIcon} 
+                src='/img/profile.svg' 
                 alt='Profile'
                 className={['/sign-in-up', '/welcome'].indexOf(location.pathname) > -1 ? 'icon--active': ''}/>
         </Link>
         <div onClick={toggleCartHidden}>
             <img 
-                src={cartIcon} 
+                src='/img/cart.svg'
                 alt='Cart'
                 className={location.pathname === '/checkout'? 'icon--active': ''}/>
         </div>

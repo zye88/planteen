@@ -11,7 +11,7 @@ const CareContainer = ({id, care}) => {
                     <div 
                         key={`${id}-${labels[indx]}`}
                         className='care__item'>
-                        <img src={require(`../../img/${icons[indx]}`)} alt={labels[indx]}/>
+                        <img src={`/img/${icons[indx]}`} alt={labels[indx]}/>
                         <span>{labels[indx]}: {item}</span>
                     </div>)
             }         

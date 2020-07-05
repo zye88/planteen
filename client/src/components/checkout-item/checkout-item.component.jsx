@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 import { removeCartItem, addCartItem, clearCartItem } from '../../redux/cart/cart.action';
 
 import './checkout-item.styles.css';
-import trashIcon from '../../img/trash-outline.svg';
-import incIcon from '../../img/chevron-forward-outline.svg';
-import descIcon from '../../img/chevron-back-outline.svg';
 
 const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
     const { id, image, name, price, quantity } = item;
     return (
         <li className='checkout-item'>
             <div className='item__desc'>
-                <img src={require(`../../img/${image}`)} alt='Product Item'/>
+                <img src={`/img/${image}`} alt='Product Item'/>
                 <span>
                     {name}
                 </span>
@@ -20,19 +17,19 @@ const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
             <div className='item__quantity'>
                 <img
                     className='clear-icon' 
-                    src={trashIcon} 
+                    src='/img/trash-outline.svg'
                     onClick={() => clearCartItem(id)}
                     alt='Remove'/>
                 <div>
                     <img 
                         className='update-icon' 
-                        src={descIcon} 
+                        src='/img/chevron-back-outline.svg' 
                         alt='Decrease' 
                         onClick={() => removeCartItem(id)}/>
                     <span>{quantity}</span>
                     <img 
                         className='update-icon' 
-                        src={incIcon} 
+                        src='/img/chevron-forward-outline.svg'
                         alt='Increase'
                         onClick={() => addCartItem(item)}/>
                 </div>

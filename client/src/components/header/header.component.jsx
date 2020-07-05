@@ -12,12 +12,11 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 // Style and image imports
 import './header.styles.css';
-import leafLogo from '../../img/leaf.svg';
 
 const Header = ({ cartHidden }) => (
     <header className='header'>
         <Link className='header__branding' to='/'>
-            <img src={leafLogo} alt='Leaf logo'/>
+            <img src='/img/leaf.svg' alt='Leaf logo'/>
             <h2>Planteen</h2>
         </Link>
         <TextNavigation/>

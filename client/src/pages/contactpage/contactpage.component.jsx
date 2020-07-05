@@ -2,8 +2,6 @@ import React from 'react';
 import GoogleMap from '../../components/google-map/google-map.component';
 
 import './contactpage.styles.css';
-import FacebookIcon from '../../img/fb-logo.svg';
-import InstaIcon from '../../img/insta-logo.svg';
 
 const ContactPage = () => (
     <div className='contactpage'>
@@ -23,10 +21,10 @@ const ContactPage = () => (
             </div>
             <div className='social'>
                     <a href='https://www.facebook.com/'>
-                        <img src={FacebookIcon} alt='Facebook Link'/>
+                        <img src='/img/fb-logo.svg' alt='Facebook Link'/>
                     </a>
                     <a href='https://www.instagram.com/'>
-                        <img src={InstaIcon} alt='Instagram Link'/>
+                        <img src='/img/insta-logo.svg' alt='Instagram Link'/>
                     </a>
                 </div>
         </div>

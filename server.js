@@ -23,6 +23,8 @@ if (process.env.NODE_ENV == 'production') {
     });
 }
 
+app.use('/img', express.static(path.join(__dirname, '/img')));
+
 app.listen(port, error => {
     if (error) throw error;
     console.log(`Server is running on port: ${port}`);
