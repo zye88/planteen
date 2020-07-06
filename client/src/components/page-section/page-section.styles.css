@@ -1,0 +1,49 @@
+.page-section {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.section__img {
+    max-width: 400px;
+    height: auto;
+    margin: 0 30px 0 0;
+}
+
+.section__info span {
+    font-size: 15px;
+}
+
+.section__info .custom-btn {
+    margin-top: 15px;
+    width: fit-content;
+    width: 40%;
+}
+
+.end-with-pic img {
+    order: 2;
+    margin: 0 0 0 30px;
+}
+
+.end-with-pic .section__info {
+    text-align: right;
+}
+
+@media screen and (max-width: 678px) {
+    .page-section {
+        flex-direction: column;
+    }
+
+    .section__img {
+        width: 80vw;
+        height: auto;
+    }
+
+    .end-with-pic img {
+        order: 0;
+        margin: 0;
+    }
+
+    .end-with-pic .section__info {
+        text-align: left;
+    }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './homepage.styles.css';
-import Section from '../../components/section/section.component';
+import PageSection from '../../components/page-section/page-section.component';
 import { selectPageData } from '../../redux/page/page.selectors';
 import { connect } from 'react-redux';
 
@@ -9,9 +9,9 @@ const HomePage = ({ selectPageData }) => {
         const { plants, gift, accessories } = selectPageData('home');
         return (
             <div className='homepage'>
-                <Section { ...plants}/>
-                <Section { ...gift}/>
-                <Section { ...accessories}/> 
+                <PageSection { ...plants}/>
+                <PageSection { ...gift}/>
+                <PageSection { ...accessories}/> 
             </div>
         );
     } else {

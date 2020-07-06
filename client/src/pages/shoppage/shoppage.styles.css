@@ -6,6 +6,16 @@
 .shoppage__items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 0;
-    margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .shoppage__items {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .shoppage__items {
+        grid-template-columns: 1fr;
+    }
 }

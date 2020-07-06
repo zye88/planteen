@@ -1,15 +1,17 @@
 .text-navigation {
-    width: 40%;
+    width: fit-content;
 }
+
 .text-navigation ul {
     display: flex;
+    flex-wrap: wrap;
     padding: 0px;
     justify-content: space-between;
 }
 
 .nav-item {
     list-style: none;
-    margin: 0px 10px;
+    margin: 0 10px;
 }
 
 .text-navigation a {
@@ -23,4 +25,10 @@
 .nav-item--active a {
     color: #6DCD82;
     border-bottom: 2px solid #6DCD82;
+}
+
+@media screen and (max-width: 678px) {
+    .nav-item {
+        margin: 10px 20px 10px 0;
+    }
 }

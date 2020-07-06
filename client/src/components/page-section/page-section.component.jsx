@@ -1,9 +1,9 @@
 import React from 'react';
-import './section.styles.css';
+import './page-section.styles.css';
 import CustomButton from '../custom-button/custom-button.component';
 
-const Section = ({title, info, image, addClass, btn}) => (
-    <section className={`section ${addClass}`}>
+const PageSection = ({title, info, image, addClass, btn}) => (
+    <section className={`page-section ${addClass}`}>
         <img 
             className='section__img' 
             src={`/img/${image}`} alt={title}/>
@@ -15,4 +15,4 @@ const Section = ({title, info, image, addClass, btn}) => (
     </section>
 );
 
-export default Section;
+export default PageSection;

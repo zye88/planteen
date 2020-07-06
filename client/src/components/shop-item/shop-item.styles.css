@@ -11,19 +11,28 @@
     object-fit: cover;
 }
 
-.shop-item .custom-btn {
-    width: 80%;
-    align-self: center;
-    position: relative;
-    top: -70px;
-    
-}
-
 .item__details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: -35px;
+}
+
+@media screen and (max-width: 1024px) {
+    .btn--white {
+        visibility: visible;
+        top: 0;
+        order: 2;
+        font-weight: 300;
+        background-color: white;
+        border: 1px solid black;
+        color: black;
+        width: 100%;
+    }
+
+    .shop-item > * {
+        margin: 10px 0;
+    }
 }
 
 .item__name {

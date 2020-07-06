@@ -30,3 +30,14 @@
     height: 25px;
     margin-right: 20px;
 }
+
+@media screen and (max-width: 414px) {
+    .contactpage {
+        flex-direction: column;
+        padding-top: 0;
+    }
+
+    .contact-details {
+        margin-left: 0;
+    }
+}
