@@ -12,11 +12,6 @@ export const selectContact = createSelector(
     order => order.contact
 );
 
-export const selectOrderSuccessHidden = createSelector(
-    [selectOrder],
-    order => order.successHidden
-)
-
 export const selectContactComplete = createSelector(
     [selectContact],
     contact => contact.email !== ''

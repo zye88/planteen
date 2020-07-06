@@ -8,13 +8,13 @@ const IconNavigation = ({ location }) => (
     <div className='icon-navigation'>
         <Link to='/sign-in-up'>
             <img 
-                src='/img/profile.svg' 
+                src={require('../../img/profile.svg')} 
                 alt='Profile'
                 className={['/sign-in-up', '/welcome'].indexOf(location.pathname) > -1 ? 'icon--active': ''}/>
         </Link>
         <Link to='/checkout'>
             <img 
-                src='/img/cart.svg'
+                src={require('../../img/cart.svg')}
                 alt='Cart'
                 className={`cart-icon 
                     ${location.pathname === '/checkout'? 'icon--active': ''}`}/>

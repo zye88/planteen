@@ -1,6 +1,5 @@
 import React from 'react';
 import GoogleMap from '../../components/google-map/google-map.component';
-
 import './contactpage.styles.css';
 
 const ContactPage = () => (
@@ -21,10 +20,10 @@ const ContactPage = () => (
             </div>
             <div className='social'>
                     <a href='https://www.facebook.com/'>
-                        <img src='/img/fb-logo.svg' alt='Facebook Link'/>
+                        <img src={require('../../img/fb-logo.svg')} alt='Facebook Link'/>
                     </a>
                     <a href='https://www.instagram.com/'>
-                        <img src='/img/insta-logo.svg' alt='Instagram Link'/>
+                        <img src={require('../../img/insta-logo.svg')} alt='Instagram Link'/>
                     </a>
                 </div>
         </div>

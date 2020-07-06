@@ -11,9 +11,8 @@ import {
     selectPaymentComplete, 
     selectContactComplete, 
     selectAddress, 
-    selectContact, 
-    selectOrderSuccessHidden } from '../../redux/order/order.selectors';
-import { toggleOrderSuccessHidden, clearUserInput } from '../../redux/order/order.action';
+    selectContact } from '../../redux/order/order.selectors';
+import { clearUserInput } from '../../redux/order/order.action';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { setCartItems } from '../../redux/cart/cart.action';
 
@@ -22,8 +21,7 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import PaymentContainer from '../../components/payment-container/payment-container.components';
 import UserContactContainer from '../../components/user-contact-container/user-contact-container.component';
 import GoToAction from '../../components/go-to-action/go-to-action.component';
-import OrderSuccessContainer from '../../components/order-success-container/order-success-container.component';
-
+import OrderSuccessModal from '../../components/order-success-modal/order-success-modal.component';
 
 const OrderPage = ({
     address,
@@ -34,8 +32,6 @@ const OrderPage = ({
     addressComplete, 
     paymentComplete, 
     contactComplete,
-    orderSuccessHidden,
-    toggleOrderSuccessHidden,
     clearUserInput,
     setCartItems }) => {
     
@@ -63,7 +59,6 @@ const OrderPage = ({
 
                 if(oid) {
                     setOrderId(oid);
-                    toggleOrderSuccessHidden();
                     clearUserInput();
                     setCartItems([]);
                     card.clear();
@@ -94,9 +89,7 @@ const OrderPage = ({
                         disabled={!addressComplete || !paymentComplete || !contactComplete ||totalInclTax === 0 }/>
                 </section>
             </div>
-            {orderSuccessHidden? '':
-                <OrderSuccessContainer orderId={orderId}/>
-            }
+            { orderId? <OrderSuccessModal orderId={orderId}/>: '' }
         </div>
 )};
 
@@ -109,13 +102,11 @@ const mapStateToProps = state => ({
     addressComplete: selectAddressComplete(state),
     paymentComplete: selectPaymentComplete(state),
     contactComplete: selectContactComplete(state),
-    orderSuccessHidden: selectOrderSuccessHidden(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-    toggleOrderSuccessHidden: () => dispatch(toggleOrderSuccessHidden()),
     clearUserInput: () => dispatch(clearUserInput()),
-    setCartItems: items => dispatch(setCartItems(items))
+    setCartItems: items => dispatch(setCartItems(items)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderPage);

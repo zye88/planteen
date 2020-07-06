@@ -8,10 +8,10 @@ import IconNavigation from '../icon-navigation/icon-navigation.component';
 // Style and image imports
 import './header.styles.css';
 
-const Header = ({ cartHidden }) => (
+const Header = () => (
     <header className='header'>
         <Link className='header__branding' to='/'>
-            <img src='/img/leaf.svg' alt='Leaf logo'/>
+            <img src={require('../../img/leaf.svg')} alt='Leaf logo'/>
             <h2>Planteen</h2>
         </Link>
         <TextNavigation/>

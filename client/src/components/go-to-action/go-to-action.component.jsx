@@ -4,7 +4,7 @@ import './go-to-action.styles.css';
 
 const GoToAction = ({linkUrl, label}) => (
     <Link className='go-to' to={linkUrl}>
-        <img src='/img/chevron-back-outline.svg' alt='Back Icon'/>
+        <img src={require('../../img/chevron-back-outline.svg')} alt='Back Icon'/>
         <span>{label}</span>
     </Link>
 );

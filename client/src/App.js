@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 import { auth, db, getCartDoc } from './firebase/firebase.utils';
 import './App.css';
 
@@ -27,7 +28,6 @@ const App = ({
   currentUser, 
   setPageData, 
   updateCategoryData }) => {
-
   const initLocalCart = () => {
     if(!localStorage.getItem('cartItems')) 
       localStorage.setItem('cartItems', JSON.stringify([]));
@@ -122,4 +122,7 @@ const mapDispatchToProps = dispatch => ({
   updateCategoryData: (key, value) => dispatch(updateCategoryData(key, value))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default 
+  compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter)(App);

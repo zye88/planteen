@@ -24,7 +24,7 @@ const ProductPage = ({ productDetails, match, addCartItem }) => {
                     label={`Back to ${capFirstWord(match.params.category)}`}/>
                 <div className='product-container'>
                     <div className='product__col--1'>
-                        <img src={`/img/${image}`} alt={name}/>
+                        <img src={require(`../../img/${image}`)} alt={name}/>
                     </div>
                     <div className='product__col--2'>
                         <h2>{name}</h2>

@@ -9,7 +9,7 @@ const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
     return (
         <li className='checkout-item'>
             <div className='item__desc'>
-                <img src={`/img/${image}`} alt='Product Item'/>
+                <img src={require(`../../img/${image}`)} alt='Product Item'/>
                 <div className='price-name-container'>
                     <span className='desc__name'>{name}</span>
                     <span className='desc__price'>${price}</span>
@@ -18,19 +18,19 @@ const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
             <div className='item__quantity'>
                 <img
                     className='clear-icon' 
-                    src='/img/trash-outline.svg'
+                    src={require('../../img/trash-outline.svg')}
                     onClick={() => clearCartItem(id)}
                     alt='Remove'/>
                 <div>
                     <img 
                         className='update-icon' 
-                        src='/img/chevron-back-outline.svg' 
+                        src={require('../../img/chevron-back-outline.svg')} 
                         alt='Decrease' 
                         onClick={() => removeCartItem(id)}/>
                     <span>{quantity}</span>
                     <img 
                         className='update-icon' 
-                        src='/img/chevron-forward-outline.svg'
+                        src={require('../../img/chevron-forward-outline.svg')}
                         alt='Increase'
                         onClick={() => addCartItem(item)}/>
                 </div>

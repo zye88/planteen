@@ -14,7 +14,6 @@ const INITIAL_STATE = {
     contact: {
         email: ''
     },
-    successHidden: true,
     paymentComplete: false
 }
 
@@ -35,16 +34,8 @@ const orderReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 paymentComplete: action.complete
             };
-        case OrderActionTypes.TOGGLE_ORDER_SUCCESS_HIDDEN:
-            return {
-                ...state,
-                successHidden: !state.successHidden
-            };
         case OrderActionTypes.CLEAR_USER_INPUT:
-            return {
-                ...INITIAL_STATE,
-                successHidden: state.successHidden
-            };
+            return INITIAL_STATE;
         case UserActionTypes.SET_CURRENT_USER:
             return {
                 ...state,

@@ -11,7 +11,7 @@ const CartDropdown = ({ cartItems }) => (
                 {
                     cartItems.map(({id, name, price, image, quantity}) => 
                         <li key={id} className='dropdown__item'>
-                            <img src={`/img/${image}`} alt={name}/>
+                            <img src={require(`../../img/${image}`)} alt={name}/>
                             <div className='item__info'>
                                 <span className='item__name'>{name}</span>
                                 <span>{quantity} x ${price}</span>

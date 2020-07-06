@@ -15,10 +15,6 @@ export const setPaymentComplete = complete => ({
     complete
 });
 
-export const toggleOrderSuccessHidden = () => ({
-    type: OrderActionTypes.TOGGLE_ORDER_SUCCESS_HIDDEN
-});
-
 export const clearUserInput = () => ({
     type: OrderActionTypes.CLEAR_USER_INPUT
 });

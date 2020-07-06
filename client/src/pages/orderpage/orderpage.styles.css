@@ -1,6 +1,7 @@
 .orderpage {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .orderpage .error-msg {
