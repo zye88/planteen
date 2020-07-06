@@ -34,13 +34,13 @@
 
 .item__quantity .clear-icon {
     width: 18px;
-    height: auto;
+    height: 18px;
 }
 
 .item__quantity .update-icon {
     position: relative;
     width: 15px;
-    height: auto;
+    height: 15px;
     margin: 0 15px;
     top: 3px;
 }
@@ -61,9 +61,6 @@
     }
 
     .item__quantity .update-icon {
-        position: relative;
-        width: 15px;
-        height: auto;
         margin: 0 30px;
     }
 
