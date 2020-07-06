@@ -1,5 +1,5 @@
 .payment-container {
-    width: 380px;
+    max-width: 380px;
     margin-bottom: 20px;
 }
 

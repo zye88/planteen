@@ -1,12 +1,13 @@
 .cart-dropdown {
     position: absolute;
     z-index: 1;
-    top: 60px;
-    right: 18%;
+    transform: translate(-85%, 10%);
+    transition: ease-out;
     border: solid grey 1px;
     width: 200px;
-    padding: 20px;
+    padding: 20px 20px 5px 20px;
     background-color: white;
+    display: none;
 }
 
 .cart-dropdown ul {
@@ -39,10 +40,6 @@
 
 .item__name {
     font-weight: 500;
-}
-
-.cart-dropdown .custom-btn {
-    width: 100%;
 }
 
 .empty-message {

@@ -1,12 +1,8 @@
 .icon-navigation {
     width: fit-content;
     display: flex;
-    margin-top: 10px;
+    margin: auto 0;
     text-align: right;
-}
-
-.icon-navigation div {
-    margin-left: 20px;
 }
 
 .icon-navigation img {
@@ -17,4 +13,19 @@
 .icon--active,
 .icon-navigation img:hover {
     filter: invert(73%) sepia(57%) saturate(341%) hue-rotate(80deg) brightness(90%) contrast(87%);
+}
+
+.cart-icon {
+    margin-left: 20px;
+}
+
+.cart-icon:hover + .cart-dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+    .cart-icon:hover + .cart-dropdown {
+        display: none
+    }
 }

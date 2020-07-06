@@ -1,13 +1,10 @@
 import React from 'react';
-import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { toggleCartHidden } from '../../redux/cart/cart.action';
-
 import './icon-navigation.styles.css';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const IconNavigation = ({toggleCartHidden, location}) => (
+const IconNavigation = ({ location }) => (
     <div className='icon-navigation'>
         <Link to='/sign-in-up'>
             <img 
@@ -15,19 +12,15 @@ const IconNavigation = ({toggleCartHidden, location}) => (
                 alt='Profile'
                 className={['/sign-in-up', '/welcome'].indexOf(location.pathname) > -1 ? 'icon--active': ''}/>
         </Link>
-        <div onClick={toggleCartHidden}>
+        <Link to='/checkout'>
             <img 
                 src='/img/cart.svg'
                 alt='Cart'
-                className={location.pathname === '/checkout'? 'icon--active': ''}/>
-        </div>
+                className={`cart-icon 
+                    ${location.pathname === '/checkout'? 'icon--active': ''}`}/>
+            <CartDropdown/>
+        </Link>
     </div>
 );
 
-const mapDispatchToProps = dispatch => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden())
-})
-
-export default compose(
-    connect(null, mapDispatchToProps),
-    withRouter)(IconNavigation);
+export default withRouter(IconNavigation);

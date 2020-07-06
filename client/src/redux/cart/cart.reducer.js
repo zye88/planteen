@@ -3,17 +3,12 @@ import UserActionTypes from '../user/user.types';
 import { addItem, removeItem, clearItem, updateCartStorage } from './cart.utils';
 
 const INITIAL_STATE = {
-    cartHidden: true,
     cartItems: [],
     userId: null
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case CartActionTypes.TOGGLE_CART_HIDDEN:
-            return { 
-                ...state, 
-                cartHidden: !state.cartHidden};
         case CartActionTypes.SET_CART_ITEMS:
             updateCartStorage(state.userId, action.cartItems);
             return {

@@ -47,7 +47,7 @@ const OrderPage = ({
     const handleSubmit = async () => {
         if(!stripe || !elements) return;
         const card = elements.getElement(CardElement);
-        const stripePrice = totalInclTax * 100;
+        const stripePrice = Math.trunc(totalInclTax * 100);
 
         try {
             const result = await stripe.createToken(card);
@@ -95,7 +95,8 @@ const OrderPage = ({
                 </section>
             </div>
             {orderSuccessHidden? '':
-                <OrderSuccessContainer orderId={orderId}/>}
+                <OrderSuccessContainer orderId={orderId}/>
+            }
         </div>
 )};
 

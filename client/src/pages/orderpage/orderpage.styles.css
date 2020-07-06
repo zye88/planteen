@@ -46,4 +46,12 @@
     .orderpage__info {
         flex-direction: column;
     }
+
+    .orderpage section > * {
+        margin-bottom: 40px;
+    }
+
+    .right-section .custom-btn {
+        margin: 0;
+    }
 }
