@@ -9,10 +9,15 @@
 .item__desc {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.item__desc span {
+.item__desc div {
     text-align: left;
+}
+
+.desc__price {
+    display: none;
 }
 
 .item__desc img {
@@ -41,4 +46,35 @@
 
 .item__quantity input {
     width: 50px;
+}
+
+@media screen and (max-width: 411px) {
+    .checkout-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .price-name-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item__quantity .update-icon {
+        position: relative;
+        width: 15px;
+        height: auto;
+        margin: 0 30px;
+    }
+
+    .item__quantity {
+        margin-bottom: 20px;
+    }
+
+    .price-subtotal-container {
+        display: none;
+    }
+
+    .desc__price {
+        display: flex;
+    }
 }

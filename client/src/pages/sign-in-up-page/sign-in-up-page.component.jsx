@@ -20,6 +20,7 @@ const SignInUpPage = () => {
                     facebookSignIn
                     handleClick={() => signInWithPlatform('facebook')}/>
             </div>
+            <div className='signinup-divider'/>
             <SignInUpEmail 
                 signup={signup} 
                 toggleSignup={() => setSignup(!signup)}/>

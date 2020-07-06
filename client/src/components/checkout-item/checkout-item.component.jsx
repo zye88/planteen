@@ -10,9 +10,10 @@ const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
         <li className='checkout-item'>
             <div className='item__desc'>
                 <img src={`/img/${image}`} alt='Product Item'/>
-                <span>
-                    {name}
-                </span>
+                <div className='price-name-container'>
+                    <span className='desc__name'>{name}</span>
+                    <span className='desc__price'>${price}</span>
+                </div>
             </div>
             <div className='item__quantity'>
                 <img
@@ -34,10 +35,10 @@ const CheckoutItem = ({ item, removeCartItem, addCartItem, clearCartItem }) => {
                         onClick={() => addCartItem(item)}/>
                 </div>
             </div>
-            <div>
+            <div className='price-subtotal-container'>
                 <span className='item__price'>${price}</span>
             </div>
-            <div>
+            <div className='price-subtotal-container'>
                 <span className='item__subtotal'>${price * quantity}</span>
             </div>
         </li>

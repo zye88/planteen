@@ -85,7 +85,7 @@ const OrderPage = ({
                     <UserContactContainer/>
                     <AddressContainer/>
                 </section>
-                <div className='vert-divider'/>
+                <div className='divider'/>
                 <section className='right-section'>
                     <PaymentContainer/>
                     <CustomButton

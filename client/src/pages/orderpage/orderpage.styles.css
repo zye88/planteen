@@ -26,7 +26,7 @@
     flex-direction: column;
 }
 
-.orderpage .vert-divider {
+.orderpage .divider {
     width: 1px;
     height: 400px;
     margin: auto;
@@ -36,4 +36,14 @@
 .right-section .custom-btn {
     width: 200px;
     margin: 0 0 30px auto;
+}
+
+@media screen and (max-width: 768px) {
+    .orderpage .divider {
+        display: none;
+    }
+
+    .orderpage__info {
+        flex-direction: column;
+    }
 }

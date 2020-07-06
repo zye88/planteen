@@ -28,7 +28,7 @@
 .social img {
     width: 25px;
     height: 25px;
-    margin-right: 20px;
+    margin: 0 20px 30px 0;
 }
 
 @media screen and (max-width: 414px) {
